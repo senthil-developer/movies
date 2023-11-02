@@ -39,11 +39,9 @@ const Card = async () => {
               )}</h4>
               <div className=' flex  justify-between'>
               <div > {item.release_date}</div>
-              <div className='flex items-center mr-2  gap-1' > <FcRating />{item.vote_average}</div>
+              <div className='flex items-center mr-2  gap-1' ><FcRating />{item.vote_average}</div>
               </div>
-
             </div>
-
           </Link>
       </div>
       )
