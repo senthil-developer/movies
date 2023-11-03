@@ -17,18 +17,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en" className='scroll'>
+    <html lang="en" className=''>
       <body className={poppins.className}>    
-         <div className='flex w-full '>
-            <div className=''>
+        
               <Navbar/>
-            </div>
-            <div className='flex flex-col w-full'>
-             
+        
               <Search/>
+             
               {children}
-            </div>
-         </div>
       </body>
     </html>
   )

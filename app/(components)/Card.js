@@ -18,7 +18,7 @@ const Card = async () => {
   const page1 = await page.results;    
   return (
      
-    <div className='mt-16 w-full  h-full   grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 '>
+    <div className=' w-full    grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 '>
          
     
     {
@@ -39,7 +39,8 @@ const Card = async () => {
               )}</h4>
               <div className=' flex  justify-between'>
               <div > {item.release_date}</div>
-              <div className='flex items-center mr-2  gap-1' ><FcRating />{item.vote_average}</div>
+              <div className='flex items-center mr-2  gap-1' ><FcRating />{item.vote_average.toString().substring(0,3)}
+             </div>
               </div>
             </div>
           </Link>
