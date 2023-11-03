@@ -5,7 +5,7 @@ import {FcRating} from 'react-icons/fc';
 
 const API_KEY = process.env.API_KEY
 async function getMovies(){
-    const res = await fetch(`https://api.themoviedb.org/3/movie/popular/?language=en&api_key=${API_KEY}&page=1&with_genres=28`);
+    const res = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en&api_key=${API_KEY}&page=1&with_genres=28`);
     const val =  await res.json();
     console.log(val);
 

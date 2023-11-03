@@ -8,7 +8,7 @@ async function  getData(movieId) {
       throw new Error('Failed to fetch data');
     }
   const data = await response.json();
-//   console.log(data)
+  console.log(data)
   return data;
 }
 const page = async ({params}) => {
