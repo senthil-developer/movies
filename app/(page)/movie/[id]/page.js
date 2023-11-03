@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 async function  getData(movieId) {
@@ -18,8 +19,10 @@ const page = async ({params}) => {
     //     objectFit: 'cover',
     //     backgroundColor: ''
     // }
+
 const movieId = params.id;
 const movie = await getData(movieId);
+// write a function that returns genres name & id  from api
   return (
     <div>
       from movie <br/>  
@@ -33,6 +36,15 @@ const movie = await getData(movieId);
         blurDataURL='/logo1.png'
         // layout='responsive'
         alt={`${movie.title} image`} />
+        <p>Budget : {movie.budget}</p>
+          <div className='flex flex-wrap'>
+            Genre :
+           {movie.genres.map(item =>{
+            return (
+            <div key={item.id} className=' ml-1' >{item.name}</div>
+            )})}
+          </div>
+        <Link href={movie.homepage} target='_black' className='border border-red-700 bg-red-500'> watch</Link>
     </div>
   )
 }

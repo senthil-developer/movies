@@ -7,7 +7,7 @@ const API_KEY = process.env.API_KEY
 async function getMovies(){
     const res = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en&api_key=${API_KEY}&page=1&with_genres=28`);
     const val =  await res.json();
-    console.log(val);
+    // console.log(val);
 
     return val;
 }
@@ -30,8 +30,8 @@ const Card = async () => {
             <div>
               <Image src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} priority= {true} alt={item.title} width={220} height={300} className=' w-auto h-auto  '/>
             </div>
-            <div className='h-full bg-slate-400 '>
-              <h4 className='whitespace-nowrap w-full'>{item.title.substring(0,24)}
+            <div className='h-full bg-slate-400 pl-1'>
+              <h4 className='whitespace-nowrap w-full'>{item.title.substring(0,23)}
               {(item.title.length > 24) ? (
                 <span>...</span>
               ):(
