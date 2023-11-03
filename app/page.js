@@ -17,7 +17,8 @@ export const page = async () => {
   const result = await res.results;
   return (
     <>
-    <div className='mt-32 text-black  border-2 border-blue-400 w-fit'><Link className='' href='/card'>
+    <div className='mt-32 text-black  border-2 border-blue-400 w-fit'>
+      <Link className='' href='/card'>
       test
     </Link></div>
      { 

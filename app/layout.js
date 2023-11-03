@@ -10,7 +10,7 @@ const poppins = Poppins({
   weight : ["500", "600", "700", "800", "900"]
  })
 export const metadata = {
-  title: 'movieuniverse',
+  title: 'movie universe',
   description: 'tech stack - next js 13 , react js , tailwind css',
 }
 
