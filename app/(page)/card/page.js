@@ -1,9 +1,39 @@
 import React from 'react'
-import Card from '@/app/(components)/Card'
+import Image from 'next/image'
+import Link from 'next/link';
+import {FcRating} from 'react-icons/fc';             
+import Card from '@/app/(components)/Card';
 
-const page = () => {
+
+const API_KEY = process.env.API_KEY
+async function getMovies(){
+    const res = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en&api_key=${API_KEY}&page=1&with_genres=28`);
+    const val =  await res.json();
+    // console.log(val);
+
+    return val;
+}
+ 
+ 
+const page = async () => {
+  const page0 = await getMovies([]);
+  const page1 = await page0.results;    
   return (
-    <div><Card /></div>
+     
+    <div className=' w-full  grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 '>
+         
+    
+    {
+      page1.map((item)=>{
+
+      return(
+        <Card  key={item.id} movie={item} 
+        className=' flex flex-col justify-evenly  my-8 mx-auto border-2 border-pink-500 shadow-sm w-[220px] ' 
+        style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${item.poster_path})`}} />
+           
+        
+    )})}
+  </div>
   )
 }
 

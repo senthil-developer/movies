@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React from 'react'
-import Card from './(components)/Card';
 
 const API_KEY = process.env.API_KEY;
 
@@ -17,7 +16,7 @@ export const page = async () => {
   const result = await res.results;
   return (
     <>
-    <div className='mt-32 text-black  border-2 border-blue-400 w-fit'>
+    <div className=' text-black  border-2 border-blue-400 w-fit'>
       <Link className='' href='/card'>
       test
     </Link></div>

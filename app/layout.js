@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en" className='scroll'>
+    <html lang="en" className='scroll-y'>
       <body className={poppins.className}>   
               <Navbar/>
               {children}

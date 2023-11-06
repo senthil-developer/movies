@@ -13,11 +13,12 @@ const Search = () => {
         router.push(`/search/${input}`)
     }
   return (        
-      <form id='searchForm' name='searchInput'  onSubmit={handleSubmit} className='flex w-[50%] max-w-[90%] border-gray-300 border justify-between py-3 px-5 rounded-full focus-within:shadow-md hover:shadow-md transition-shadow items-center sm:max-w-xl  lg:max-w-2xl bg-white'>
-            <input name='searchInput' onChange={(e)=>setInput(e.target.value)} value={input} type='text' placeholder='search breaking bad'  className='outline-none
-            text-black w-full bg-white'  />
-            <AiOutlineSearch onClick={handleSubmit}  className=' text-2xl  text-blue-600 font-bold ml-[9px] cursor-pointer'/>
-        </form>
+    <form id='searchForm' name='searchInput'  onSubmit={handleSubmit} className='flex w-[50%] max-w-[90%] border-gray-300 border justify-between py-3 px-5 rounded-full focus-within:shadow-md hover:shadow-md transition-shadow items-center sm:max-w-xl  lg:max-w-2xl bg-white'>
+        <label htmlFor='input' className='sr-only'>Search</label> 
+        <input name='searchInput' id='input' onChange={(e)=>setInput(e.target.value)} value={input} type='text' placeholder='search breaking bad'  className='outline-none
+        text-black w-full bg-white'  />
+        <AiOutlineSearch onClick={handleSubmit}  className=' text-2xl  text-blue-600 font-bold ml-[9px] cursor-pointer'/>
+    </form>
 
   )
 }
