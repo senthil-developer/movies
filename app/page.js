@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react'
+import AnimatedImg from './(components)/AnimatedImg';
 
 const API_KEY = process.env.API_KEY;
 
@@ -15,8 +16,9 @@ export const page = async () => {
   const res = await getMovies([]);
   const result = await res.results;
   return (
-    <>
+    <><AnimatedImg/>
     <div className=' text-black  border-2 border-blue-400 w-fit'>
+    
       <Link className='' href='/card'>
       test
     </Link></div>

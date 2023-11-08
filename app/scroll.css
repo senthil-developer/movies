@@ -20,15 +20,6 @@
         scroll-behavior: smooth;
     }
     .scroll-x::-webkit-scrollbar{
-        width:7px;
+        display: none;
     }
-    .scroll-x::-webkit-scrollbar-track{
-        background: black;
-        
-    }
-    .scroll-x::-webkit-scrollbar-thumb{
-        border-radius: 3px;
-        box-shadow: inset 0px 0px 0px 1px black;
-        background-color: rgb(118, 172, 172);
-    }
-    
+   

@@ -4,7 +4,9 @@ const page = ({params}) => {
 const input = params.input
 console.log(input)
   return (
-    <div>{input}</div>
+    
+    <div> 
+      {input}</div>
   )
 }
 

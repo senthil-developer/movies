@@ -5,9 +5,9 @@ import Search from './Search'
 import './navbar.css'
 import Link from 'next/link'
 const Navbar = () => { 
-  
+
   return (
-    <div className=' w-full flex header sticky top-0  text-white py-5 items-center '>
+    <div className=' w-full flex header sticky top-0  text-white py-5 items-center  backdrop-blur-[3.5px] overflow-hidden'>
       <Link href='/'>
           <Image src='/logo1.png' priority={true} className='w-10 h-10 sm:w-[60px] sm:h-[60px] ml-2' width={60} height={60} alt='logo' /> 
       </Link>
