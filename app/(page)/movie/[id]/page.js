@@ -21,9 +21,9 @@ async function  getVideo(movieId) {
       throw new Error('Failed to fetch data');
     }
   const video = await response.json();
-  const result = [video.results]
+
   // console.log(result)
-  return result;
+  return video;
 }
 async function  getCastCrew(movieId) {
   const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=en&api_key=${process.env.API_KEY}`);
@@ -55,8 +55,7 @@ const hourToMins = (totalMinutes) => {
         <Image src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path}`} width={500} height={200} style={{width: 'auto',height:'auto',}} className=' w-auto h-auto  ' priority={false} alt={`${movie.title} image`} placeholder='blur'  blurDataURL='/logo1.png'/>
         <p>Overview : {movie.overview}</p>
       </div>
-
-        <p>Budget : {movie.budget==0 ? "no info" : movie.budget}</p>
+      {movie.budget==0 ? "Budget :  no info" : <p>Budget :  &#36;{movie.budget} </p> }
         <div className='flex '>
            <div className='mt-2'>Genre: </div>
             <div className='flex flex-wrap'>
@@ -69,21 +68,18 @@ const hourToMins = (totalMinutes) => {
         </div>
         <div className='flex gap-2'>
           <div>Status : {(movie.status)?movie.status :"no info" }</div>
-          <div>Release date : {(movie.release_date)?dayjs(movie.release_date).format("D/MM/YYYY"):"no info"}</div>
+          <div>Release date : {(movie.release_date)?dayjs(movie.release_date).format("D MMM YYYY"):"no info"}</div>
         </div>
         <div className='flex gap-2'>
           <div>RunTime : {hourToMins(movie.runtime)}</div>
         </div>
-        <Link href={movie.homepage} target='_black' className='border border-red-700 bg-red-500 flex w-fit items-center'> more about movie <ExternalLinkIcon className='mx-1'/></Link>
-        <p>Credits</p>
-        <Credit credit={credit}/>
+        <div className='group'>
+        <p className='text-xl font-bold group-visited:text-slate-500'>Top Cast</p>
+        <Credit credit={credit} />
+        </div>
         <p>Official Videos</p>
-        {
-        video.map((item)=>{
-            return(
-              <YoutubeVideo item={item} key={item.map((item)=>item.id)} />
-            )
-          })}
+        <YoutubeVideo item={video} className='focus-within:group-visited:'/>
+        <Link href={movie.homepage} target='_black' className='border border-red-700 bg-red-500 flex w-fit items-center'> Watch Movie <ExternalLinkIcon className='mx-1'/></Link>
       </div>
   )
 }
