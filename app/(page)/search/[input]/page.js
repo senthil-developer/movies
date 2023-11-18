@@ -33,7 +33,7 @@ console.log(results)
           </div> 
             <div className='bg-slate-400 pl-1'>
               <h4 className='whitespace-nowrap w-full'>{movie.title.substring(0,23)}
-              {(movie.title.length > 24) ? (
+              {(movie.title.length > 23) ? (
                 <span>...</span>
               ):(
                 <span></span>
