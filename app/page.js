@@ -22,13 +22,9 @@ export const page = async () => {
   const  peopleResults  = peopleRes.results;
   console.log(results)
   const image = results?.[Math.floor(Math.random()*20)]
-  console.log(image)
-  const img = 'l'
-  console.log(img)
   return (
     <div className='w-full h-screen'>
         <AnimatedImg/>
-        {results.title}
         <div className='w-full h-96 flex justify-center items-center' style={{backgroundImage:`url(https:image.tmdb.org/t/p/original${image.backdrop_path})`,backgroundPosition:'center' , backgroundRepeat:'no-repeat' , backgroundSize:'cover' ,}}>
         <div className='text-2xl font-bold'>Welcome</div>
         </div>
