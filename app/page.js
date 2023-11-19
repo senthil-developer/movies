@@ -25,7 +25,7 @@ export const page = async () => {
   return (
     <div className='w-full h-screen'>
         <AnimatedImg/>
-        <div className='w-full h-96 flex justify-center items-center' style={{backgroundImage:`url(https:image.tmdb.org/t/p/original${image.backdrop_path})`,backgroundPosition:'center' , backgroundRepeat:'no-repeat' , backgroundSize:'cover' ,}}>
+        <div className='w-full h-96 flex justify-center items-center' style={{backgroundImage:`url(https:image.tmdb.org/t/p/original${image.backdrop_path} || './defaultPoster.jfif' )`,backgroundPosition:'center' , backgroundRepeat:'no-repeat' , backgroundSize:'cover' ,}}>
         <div className='text-2xl font-bold'>Welcome</div>
         </div>
         <div>trending movies
