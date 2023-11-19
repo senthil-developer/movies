@@ -1,8 +1,6 @@
 import './globals.css'
 import './scroll.css'
 import { Poppins } from 'next/font/google'
-import Navbar from './(components)/Navbar'
-import Search from './(components)/Search'
 
 
 const poppins = Poppins({
@@ -20,7 +18,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className='scroll-y'>
       <body className={poppins.className}>   
               {children}
-              <Navbar/>
       </body>
     </html>
   )
