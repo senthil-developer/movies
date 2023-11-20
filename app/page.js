@@ -18,10 +18,9 @@ export const page = async () => {
   const pathPerson = 'person'
   const  peopleRes  = await getMovies(pathPerson);
   const  peopleResults  = peopleRes.results;
-  console.log(results)
   const image = results?.[Math.floor(Math.random()*20)]
-  console.log(image)
-  const bg = image.backdrop_path ? `https:image.tmdb.org/t/p/original${image.backdrop_path}`: "/defaultPoster.jfif"
+  const bgPath = image.backdrop_path.slice(0,-1)
+  const bg = image.backdrop_path ? `_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${bgPath}g&w=1200&q=99`: "/defaultPoster.jfif"
   
   return (
     <div className='w-full h-screen'>
