@@ -1,9 +1,10 @@
 import React from 'react'
 
-const page = () => {
+const page = ({params}) => {
   return (
     <div>
         movie page
+params :{params}
     </div>
   )
 }
