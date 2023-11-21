@@ -4,7 +4,7 @@ import Test from './(components)/Test';
 
 const API_KEY = process.env.API_KEY
 async function getMovies(path){
-    const res = await fetch(`https://api.themoviedb.org/3/trending/${path}/day?language=en&api_key=${API_KEY}&page=1`);
+    const res = await fetch(`https://api.themoviedb.org/3/trending/${path}/day?language=en&api_key=${API_KEY}&page=1`,{next : {revalidate: 10}});
     const val =  await res.json();
     return val;
 }

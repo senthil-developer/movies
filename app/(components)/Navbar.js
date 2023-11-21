@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import  '@/app/scroll.css'
 import {BsSearch} from 'react-icons/bs'
 import './navbar.css'
 import Link from 'next/link'
@@ -15,7 +14,7 @@ import { PiTelevisionSimple, PiTelevisionSimpleFill } from 'react-icons/pi'
 const Navbar = () => {
 const path = usePathname()
   return (
-    <div className=' w-full flex header sticky bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50 backdrop-blur-[3.5px]'>
+    <div className='w-full flex header sticky bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50'>
         <Link className={path === '/' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/'>{path === '/' ? <FaHome size={25} /> : <GoHome size={25}/>}Home</Link>
         <Link className={path === '/movie' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/movie'>{path == '/movie' ? <BiSolidMoviePlay size={25}/> : <BiMoviePlay size={25}/>}Movies</Link>
         <Link className={path === '/search' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/search'>{path === '/search' ?<RiSearchFill size={25} />: <BsSearch size={25} className='p-0.5'/>}Search</Link>
