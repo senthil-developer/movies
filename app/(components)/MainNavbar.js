@@ -1,15 +1,22 @@
-'use client'
+
 import React from 'react'
-import {IoIosSunny} from 'react-icons/io'
-
-
-
-
+import DarkModeToggle from './DarkModeToggle'
+import Image from 'next/image'
 
 const Theme = () => {
   return (
-    <div className='w-full flex justify-between'>
- 
+    <div className='px-2 z-20 w-full flex justify-between fixed top-0 backdrop-blur-[3.5px]'>
+      <div className='relative '>
+        <Image src='/logo1.png' alt='logo' width={30} height={30}  style={{objectFit:'cover',width:'30px',height:'30px'}}  className='rounded-lg'/>
+      </div> 
+        <ul className='flex justify-between items-center gap-3'>
+          <li>Movie</li>
+          <li>Series</li>
+          <li>people</li>
+        </ul>
+      <div>
+        <DarkModeToggle />
+      </div>
     </div>
   )
 }

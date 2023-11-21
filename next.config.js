@@ -4,7 +4,10 @@ const nextConfig = {
         domains:[
             "image.tmdb.org" , "img.youtube.com"
         ]
-    }
+    },
+    compiler:{
+        styledComponents:true
+    },
 }
 
 module.exports = nextConfig

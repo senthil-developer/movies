@@ -25,7 +25,7 @@ export const page = async () => {
   return (
     <div className='w-full h-screen'>
         <div className='w-full h-96 sm:h-screen flex justify-center items-center bg-cover bg-center'  style={{backgroundImage: `url(${bg})` , backgroundRepeat:'no-repeat' , backgroundPosition:'none'}}>
-        <div className='text-2xl font-bold absolute'>Welcome</div>
+        <div className='text-3xl font-bold '>Welcome</div>
         </div>
         <div>trending movies
         <div className='w-full scroll-x flex gap-3 '>

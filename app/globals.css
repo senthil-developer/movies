@@ -2,13 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    :root[data-theme='dark']{
-        background-color:red ;
-        /* font-size: 200px; */
-    }
-    .abc:root{
-        background-color:red ;
-
-    }
-}
