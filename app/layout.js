@@ -1,7 +1,7 @@
 import './globals.css'
 import './scroll.css'
 import { Poppins } from 'next/font/google'
-
+import MainNavbar from './(components)/MainNavbar'
 
 const poppins = Poppins({
   subsets: ['latin'] ,
@@ -15,8 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en" className='scroll-y'>
-      <body className={poppins.className}>   
+    <html lang="en"  className='scroll-y'>
+      <body className={poppins.className}> 
+              <MainNavbar/>  
               {children}
       </body>
     </html>

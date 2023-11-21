@@ -9,7 +9,7 @@ const Test = ({results}) => {
         {results.map((results)=>{
          return(
            <Link key={results.id} href={`/${results.media_type === 'tv' ? 'series' : results.media_type}/${results.id}`}> 
-           <div className='flex flex-col relative sm:w-[200px] sm:h-[300px] w-[120px] h-[200px] rounded-lg'>   
+           <div className='flex flex-col relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px] md:h-[250px] rounded-lg'>   
                 <Image src={results.poster_path || results.profile_path ? `https://image.tmdb.org/t/p/original${results.poster_path||results.profile_path}`: "/defaultImage.jfif"} width={200} height={300}  style={{objectFit:'cover',width:'200px',height:'300px'}} alt={results.title || results.name} priority={false} className='rounded-lg'  placeholder='blur'  blurDataURL='/defaultImage.jfif'/>
             </div>
                 <div className='text-sm'>

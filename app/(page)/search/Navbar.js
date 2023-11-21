@@ -16,7 +16,7 @@ const path = usePathname()
         <Link className={path === '/' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/'>{path === '/' ? <FaHome  size={25}/> : <GoHome size={25}/>}Home</Link>
         <Link className={path === '/movie' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/movie'>{path == '/movie' ? <BiSolidMoviePlay  size={25}/> : <BiMoviePlay size={25}/>}Movie</Link>
         <Link className='text-white flex flex-col items-center'  href='/search'><RiSearchFill size={25}/>Search</Link>
-        <Link className={path === '/search' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/series'>{path === '/series' ? <PiTelevisionSimpleFill size={25}/> :<PiTelevisionSimple size={25}/>}Series</Link>
+        <Link className={path === '/series' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/series'>{path === '/series' ? <PiTelevisionSimpleFill size={25}/> :<PiTelevisionSimple size={25}/>}Series</Link>
         <Link className={path === '/people' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/person'>{path === '/person' ? <IoPeopleSharp size={25}/> : <IoPeopleOutline size={25}/>}Peoples</Link>
     </div>
   )
