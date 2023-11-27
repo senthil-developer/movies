@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import {BsSearch} from 'react-icons/bs'
-import './navbar.css'
 import Link from 'next/link'
 import { GoHome } from 'react-icons/go'
 import { FaHome } from 'react-icons/fa' 
