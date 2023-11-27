@@ -1,10 +1,8 @@
-
 import './globals.css'
 import './scroll.css'
 import { Poppins } from 'next/font/google'
-import MainNavbar from './(components)/MainNavbar'
-import Provider from './(components)/Provider'
-
+import MainNavbar from '@/components/MainNavbar'
+import Provider from '@/components/Provider'
 const poppins = Poppins({
   subsets: ['latin'] ,
   weight : ["500", "600", "700", "800", "900"]
@@ -17,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en"  className='scroll-y'>
+    <html lang="en" suppressHydrationWarning className='scroll-y'>
       <body className={poppins.className}> 
       <Provider>
           <MainNavbar/>  

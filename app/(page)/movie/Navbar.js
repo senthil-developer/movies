@@ -13,7 +13,7 @@ import { PiTelevisionSimple, PiTelevisionSimpleFill } from 'react-icons/pi'
 const Navbar = () => {
 const path = usePathname()
   return (
-    <div className='w-full flex header sticky bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50'>
+    <div className='w-full flex header sticky bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-20'>
         <Link className={path === '/' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/'>{path === '/' ? <FaHome size={25}/> : <GoHome size={25}/>}Home</Link>
         <Link className='text-white flex flex-col items-center' href='/movie'>{<BiSolidMoviePlay size={25}/>}Movie</Link>
         <Link className={path === '/search' ? 'text-white flex flex-col items-center' : 'flex flex-col items-center'  } href='/search'>{path === '/search' ?<RiSearchFill size={25}/>: <BsSearch size={25} className='p-0.5'/>}Search</Link>

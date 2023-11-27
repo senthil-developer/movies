@@ -1,13 +1,5 @@
 import React from 'react'
-import Card from '@/app/(components)/Card'
-
-// get current url in server side component nextjs 13
-
-// import { useRouter } from 'next/router'
-
-
-
-
+import Card from '@/components/Card'
 
 const page = ({params}) => {
   return (

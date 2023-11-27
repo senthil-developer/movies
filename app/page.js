@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './(components)/Navbar';
-import Test from './(components)/Test';
+import Navbar from '@/components/Navbar';
+import Test from '@/components/Test';
 
 const API_KEY = process.env.API_KEY
 async function getMovies(path){

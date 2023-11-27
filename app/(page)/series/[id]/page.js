@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import YoutubeVideo from '@/app/(components)/YoutubeVideo';
+import YoutubeVideo from '@/components/YoutubeVideo';
 import { ExternalLinkIcon } from '@radix-ui/react-icons'
 import dayjs from 'dayjs';
-import Credit from '@/app/(components)/Credit';
+import Credit from '@/components/Credit';
 
 // async function  getData(movieId) {
 //   const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en&api_key=${process.env.API_KEY}`);

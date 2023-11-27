@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images:{
-        domains:[
-            "image.tmdb.org" , "img.youtube.com"
-        ]
-    },
-    compiler:{
-        styledComponents:true
+        remotePatterns:[
+            {
+                protocol: 'https',
+                hostname: 'image.tmdb.org',
+            },
+            {
+                protocol: 'https',
+                hostname: 'img.youtube.com',
+            },
+        ],
     },
 }
 
