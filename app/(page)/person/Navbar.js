@@ -1,6 +1,5 @@
 'use client'
 import {RiSearchFill} from 'react-icons/ri'
-import '@/app/(components)/navbar.css'
 import Link from 'next/link'
 import { GoHome } from 'react-icons/go'
 import { FaHome } from 'react-icons/fa' 
