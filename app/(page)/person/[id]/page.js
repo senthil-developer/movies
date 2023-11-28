@@ -7,7 +7,7 @@ import React from 'react'
 export async function generateMetadata({params}){
     const person = await fetchData(`person/${params.id}`,'')
     const image = person.profile_path.slice(1)
-    const url = `https://movieuniverse.vercel.app_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${image}&w=256&q=75`
+    const url = `https://movieuniverse.vercel.app/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${image}&w=256&q=75`
     const dept = person?.known_for_department == 'Acting' && person?.gender == 2 ? 'Actor': '' || person?.known_for_department == 'Acting' && person?.gender == 1 ? 'Actress': ''|| person?.known_for_department == 'Writing' ? 'Writer': '' || person?.known_for_department == 'Directing' ? 'Director': '' || person?.known_for_department == 'Editing' ? 'Editor': '' || person?.known_for_department == 'Production' ? 'Producer': '' || person?.known_for_department == 'Sound' ? 'Music Composer': '' || person?.known_for_department == 'Camera' ? 'Cinematographer': '' || person?.known_for_department == 'Crew' ? 'Stunts': '' || person?.known_for_department == 'Art' ? 'Art Department': '' || person?.known_for_department == 'Visual Effects' ? 'VFX Artist': '' || person?.known_for_department == 'Lighting' ? 'Lighting Artist': '' || person?.known_for_department == 'Costume & Make-Up' ? 'Costume Designer': '';
     return {
       title: `${person.name} | ${dept}` ,
