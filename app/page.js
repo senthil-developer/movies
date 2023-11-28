@@ -2,7 +2,6 @@ import React from 'react'
 import Navbar from '@/components/Navbar';
 import Test from '@/components/Test';
 import {fetchData} from '@/components/FetchData';
-import Tab from '@/components/Tab';
 
 export const page = async () => {
   const {results}  = await fetchData('trending/movie/day','');
@@ -21,7 +20,6 @@ export const page = async () => {
         <div className='text-3xl font-bold '>Welcome</div>
         </div>
         <div>trending movies
-          {/* <Tab/> */}
         <div className='w-full scroll-x flex gap-3 '>
           <Test results={results} />
         </div>

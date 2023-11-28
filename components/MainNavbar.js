@@ -1,5 +1,4 @@
 import React from 'react'
-import DarkModeToggle from './DarkModeToggle'
 import Image from 'next/image'
 
 const Theme = () => {
@@ -14,7 +13,7 @@ const Theme = () => {
           <li>people</li>
         </ul>
       <div>
-        <DarkModeToggle />
+        {/* <DarkModeToggle /> */}
       </div>
     </div>
   )
