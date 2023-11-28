@@ -24,16 +24,14 @@ const page = async ({params}) => {
         <p>hello {person.name}</p>
         <p> {person?.gender==1 && person?.known_for_department == 'Acting'  ? 'Actress' : dept }</p>
         <div className='flex gap-2 '><span>Born</span> <Dayjs res={person}/> </div>
-        <div className='md:flex mx-2 gap-2 w-full'>
-          <div className=' w-[200px] h-[300px]'>
-            <div className='relative   w-[200px] h-[300px]  '> 
-                <Image src={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}`: "/defaultImage.jfif"} width={200} height={300} priority style={{objectFit:'cover',width:'200px',height:'300px'}} alt={person.name} className='rounded-sm'/>
-            </div>
-          </div>
-          <div className='overflow-hidden  text-sm '>
-              {person.biography}
+        <div className='md:flex px-2 gap-2 w-full'>
+          <div className='relative w-[200px] h-[300px]'> 
+              <Image src={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}`: "/defaultImage.jfif"} width={200} height={300} priority style={{objectFit:'cover',width:'200px',height:'300px'}} alt={person.name} className='rounded-sm'/>
           </div>
         </div>
+          <div className='text-sm'>
+              {person.biography}
+          </div>
     </div>
   )  
 }
