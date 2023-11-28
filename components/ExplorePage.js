@@ -37,16 +37,19 @@ const router = useRouter()
     }
     console.log(genre)
   return(
-    <form onSubmit={handleSubmit}>
-      <Select  name="genres" isMulti
-      closeMenuOnSelect={false}
-      options={options}
-      // getOptionLabel={(option) => option.name}
-      // getOptionValue={(option) => option.id}
-      onChange={onChange}
-      placeholder="Select genres" noOptionsMessage={()=>{'no more genre available'}}
-      className="" />
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <Select  name="genres" isMulti
+        closeMenuOnSelect={false}
+        options={options}
+        // getOptionLabel={(option) => option.name}
+        // getOptionValue={(option) => option.id}
+        onChange={onChange}
+        placeholder="Select genres" noOptionsMessage={()=>{'no more genre available'}}
+        className="" />
+      </form>
+      
+    </>
   )
 }
 

@@ -3,7 +3,7 @@ import Link  from 'next/link'
 import Image  from 'next/image'
 import Title from './Title'
 const Test = ({results}) => { 
-  console.log(results)
+  // console.log(results)
   return (
     <div className="flex gap-3 ml-2 my-2">
         {results.map((results)=>{

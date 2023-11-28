@@ -1,23 +1,13 @@
+import { fetchData } from '@/components/FetchData';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
 import { FcRating } from 'react-icons/fc';
 
 // https://api.themoviedb.org/3/search/person?query=Vijay&include_adult=false&language=en-US&page=1&api_key={process.env.API_KEY}
-
-async function  searchInput(query) {
-  const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&page=1&api_key=${process.env.API_KEY}`);
-  if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
-  const input = await response.json();
-  const result =  input;
-  return result;
-}
-
 const page = async ({params}) => {
 const query = params.input
-const movie = await searchInput(query);
+const movie = await fetchData('search/movie',`query=${query}`);
 const {results} = movie;
 console.log(movie)
 console.log(results)

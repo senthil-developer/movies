@@ -1,22 +1,14 @@
 import React from 'react'
 import Navbar from '@/components/Navbar';
 import Test from '@/components/Test';
-
-const API_KEY = process.env.API_KEY
-async function getMovies(path){
-    const res = await fetch(`https://api.themoviedb.org/3/trending/${path}/day?language=en&api_key=${API_KEY}&page=1`,{next : {revalidate: 10}});
-    const val =  await res.json();
-    return val;
-}
+import {fetchData} from '@/components/FetchData';
+import Tab from '@/components/Tab';
 
 export const page = async () => {
-  const pathMovie = 'movie'
-  const {results}  = await getMovies(pathMovie);
-  const pathTv = 'tv'
-  const  tvRes  = await getMovies(pathTv);
+  const {results}  = await fetchData('trending/movie/day','');
+  const  tvRes  = await fetchData('trending/tv/day','');
   const  tvResults  = tvRes.results;
-  const pathPerson = 'person'
-  const  peopleRes  = await getMovies(pathPerson);
+  const peopleRes = await fetchData('trending/person/day','');
   const  peopleResults  = peopleRes.results;
   const image = results?.[Math.floor(Math.random()*20)]
   const bgPath = image.backdrop_path.slice(0,-1)
@@ -28,6 +20,7 @@ export const page = async () => {
         <div className='text-3xl font-bold '>Welcome</div>
         </div>
         <div>trending movies
+          <Tab/>
         <div className='w-full scroll-x flex gap-3 '>
           <Test results={results} />
         </div>
