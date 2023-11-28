@@ -1,26 +1,36 @@
+import Dayjs from '@/components/Dayjs';
+import { fetchData } from '@/components/FetchData';
 import Image from 'next/image';
 import React from 'react'
 
-async function  getPerson(id) {
-    const response = await fetch(`https://api.themoviedb.org/3/person/${id}?api_key=${process.env.API_KEY}`);
-    if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-    const person = await response.json();
-    const result =  person;
-    // console.log(result)
-    return result;
-  }
 
+export async function generateMetadata({params}){
+    const person = await fetchData(`person/${params.id}`,'')
+    const image = person.profile_path
+    const url = `https://movieuniverse.vercel.app`+image
+    const dept = person?.known_for_department == 'Acting' && person?.gender == 2 ? 'Actor': '' || person?.known_for_department == 'Acting' && person?.gender == 1 ? 'Actress': ''|| person?.known_for_department == 'Writing' ? 'Writer': '' || person?.known_for_department == 'Directing' ? 'Director': '' || person?.known_for_department == 'Editing' ? 'Editor': '' || person?.known_for_department == 'Production' ? 'Producer': '' || person?.known_for_department == 'Sound' ? 'Music Composer': '' || person?.known_for_department == 'Camera' ? 'Cinematographer': '' || person?.known_for_department == 'Crew' ? 'Stunts': '' || person?.known_for_department == 'Art' ? 'Art Department': '' || person?.known_for_department == 'Visual Effects' ? 'VFX Artist': '' || person?.known_for_department == 'Lighting' ? 'Lighting Artist': '' || person?.known_for_department == 'Costume & Make-Up' ? 'Costume Designer': '';
+    return {
+      title: `${person.name} | ${dept}` ,
+      description: person.biography,
+      openGraph: {
+        images: [url],
+  }}
+  }
 const page = async ({params}) => {
-const id = params.id
-const person = await getPerson(id);
-console.log(person)
+  const person = await fetchData(`person/${params.id}`,''); 
+  const dept = person?.known_for_department == 'Acting' ? 'Actor': '' || person?.known_for_department == 'Writing' ? 'Writer': '' || person?.known_for_department == 'Directing' ? 'Director': '' || person?.known_for_department == 'Editing' ? 'Editor': '' || person?.known_for_department == 'Production' ? 'Producer': '' || person?.known_for_department == 'Sound' ? 'Music Composer': '' || person?.known_for_department == 'Camera' ? 'Cinematographer': '' || person?.known_for_department == 'Crew' ? 'Stunts': '' || person?.known_for_department == 'Art' ? 'Art Department': '' || person?.known_for_department == 'Visual Effects' ? 'VFX Artist': '' || person?.known_for_department == 'Lighting' ? 'Lighting Artist': '' || person?.known_for_department == 'Costume & Make-Up' ? 'Costume Designer': '';
   return (
-    <div>
+    <div className='mt-8'>
         <p>hello {person.name}</p>
-        <div className='relative w-[300px] h-[400px] mx-2 '> 
-            <Image src={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}`: "/defaultImage.jfif"} width={300} height={400} priority style={{objectFit:'cover',width:'300px',height:'400px'}} alt={person.name} className='rounded-sm'/>
+        <p> {person?.gender==1 && person?.known_for_department == 'Acting'  ? 'Actress' : dept }</p>
+        <div className='flex gap-2 '><span>Born</span> <Dayjs res={person}/> </div>
+        <div className='md:flex mx-2 gap-2'>
+          <div className=' w-[200px] h-[300px]  '> 
+              <Image src={person.profile_path ? `https://image.tmdb.org/t/p/original${person.profile_path}`: "/defaultImage.jfif"} width={200} height={300} priority style={{objectFit:'cover',width:'200px',height:'300px'}} alt={person.name} className='rounded-sm'/>
+          </div>
+          <div className='overflow-hidden  text-sm'>
+              {person.biography}
+          </div>
         </div>
     </div>
   )  
