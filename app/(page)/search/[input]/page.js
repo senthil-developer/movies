@@ -9,8 +9,6 @@ const page = async ({params}) => {
 const query = params.input
 const movie = await fetchData('search/movie',`query=${query}`);
 const {results} = movie;
-console.log(movie)
-console.log(results)
   return (
     <div className='w-full  grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 '>
      {

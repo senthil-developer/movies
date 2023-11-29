@@ -35,7 +35,6 @@ const router = useRouter()
     const onChange = (selectedOptions) => {
       setGenre(selectedOptions)
     }
-    console.log(genre)
   return(
     <>
       <form onSubmit={handleSubmit}>

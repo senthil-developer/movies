@@ -15,8 +15,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   
   return (
-    <html lang="en" suppressHydrationWarning className='scroll-y'>
-      <body className={poppins.className}> 
+    <html lang="en" suppressHydrationWarning  className='scroll-y'>
+      <body className={`${poppins.className} antialiased`}> 
       <Provider>
           <MainNavbar/>  
           {children}

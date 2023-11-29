@@ -6,10 +6,8 @@ import React from 'react'
 
 const page = async () => {
   const res = await fetchData('movie/949229','')
-  console.log(res)
   return (
     <div className='flex flex-col'>
-
         <p>movie page</p>
         <p>movie page</p>
         <p>movie page</p>

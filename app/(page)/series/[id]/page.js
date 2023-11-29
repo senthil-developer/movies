@@ -12,7 +12,6 @@ import Credit from '@/components/Credit';
 //       throw new Error('Failed to fetch data');
 //     }
 //   const data = await response.json();
-//   // console.log(data)
 //   return data;
 // }
 // async function  getVideo(movieId) {
@@ -21,8 +20,6 @@ import Credit from '@/components/Credit';
 //       throw new Error('Failed to fetch data');
 //     }
 //   const video = await response.json();
-
-//   // console.log(result)
 //   return video;
 // }
 // async function  getCastCrew(movieId) {
@@ -32,7 +29,6 @@ import Credit from '@/components/Credit';
 //     }
 //   const Cast = await response.json();
 //   const result =  Cast;
-//   // console.log(result)
 //   return result;
 // }
 

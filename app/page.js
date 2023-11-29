@@ -11,7 +11,6 @@ export const page = async () => {
   const  peopleResults  = peopleRes.results;
   const image = results?.[Math.floor(Math.random()*20)]
   const bgPath = image.backdrop_path.slice(1)
-  console.log(bgPath)
   const bg = image.backdrop_path ? `_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${bgPath}&w=1200&q=99`: "/defaultPoster.jfif"
   
   return (
@@ -21,17 +20,26 @@ export const page = async () => {
         </div>
         <div>trending movies
         <div className='w-full scroll-x flex gap-3 '>
-          <Test results={results} />
+        {results.map((results)=>{
+         return(
+          <Test key={results.id}  results={results} />
+         )})}
         </div>
         </div>
         <div>trending series
         <div className='w-full scroll-x flex gap-3 '>
-          <Test results={tvResults} />
+          {tvResults.map((results)=>{
+         return(
+          <Test key={results.id}  results={results} />
+         )})}
         </div>
         </div>
         <div>trending people
         <div className='w-full scroll-x flex gap-3 '>
-          <Test results={peopleResults}/>
+          {peopleResults.map((results)=>{
+         return(
+          <Test key={results.id}  results={results} />
+         )})}
         </div>
         </div>
         <Navbar/>
