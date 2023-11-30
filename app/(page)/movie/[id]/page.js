@@ -16,7 +16,7 @@ export async function generateMetadata({params}){
 const page = async ({params}) => {
   return (
     <div>
-      <Card res={params.id} />
+      <Card id={`movie/${params.id}`} />
     </div>
   )
 }
