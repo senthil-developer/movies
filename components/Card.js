@@ -26,7 +26,7 @@ const hourToMins = (totalMinutes) => {
         </div>
       </div>
       
-      <h2 className='text-2xl'>{res.title ||res.name}</h2>
+      <h1 className='text-2xl'>{res.title ||res.name}</h1>
       <h4 className='text-sm text-gray-300 '>original title : {res.original_title || res.original_name}</h4>
         <p> {res.overview ? `Overview : ${res.overview}` : "" }</p>
       {res?.budget== 0 || res?.created_by ? ""  : <p>Budget :  &#36;{res.budget} </p> }

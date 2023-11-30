@@ -5,6 +5,8 @@ import Test from '@/components/Test';
 import { Table, Theme } from '@radix-ui/themes';
 import Image from 'next/image';
 import React from 'react'
+import { columns } from "./columns"
+import { DataTable } from "./data-table"
 
 
 export async function generateMetadata({params}){
@@ -35,13 +37,24 @@ function compare(a,b){
 
 const page = async ({params}) => {
   const person = await fetchData(`person/${params.id}`,''); 
-  const credit= await fetchData(`person/${params.id}/combined_credits`,'')
-  const know_for = credit.cast.slice(0,15);
-  const cast = credit.cast.sort(compare);
+  const combinedCredit = await fetchData(`person/${params.id}/combined_credits`,'')
+  const movieCredit = await fetchData(`person/${params.id}/movie_credits`,'')
+  const tvCredit = await fetchData(`person/${params.id}/tv_credits`,'')
+  const know_for = combinedCredit.cast.slice(0,15);
+  const cast = movieCredit.cast.sort(compare);
   const dept = person?.known_for_department == 'Acting' ? 'Actor': '' || person?.known_for_department == 'Writing' ? 'Writer': '' || person?.known_for_department == 'Directing' ? 'Director': '' || person?.known_for_department == 'Editing' ? 'Editor': '' || person?.known_for_department == 'Production' ? 'Producer': '' || person?.known_for_department == 'Sound' ? 'Music Composer': '' || person?.known_for_department == 'Camera' ? 'Cinematographer': '' || person?.known_for_department == 'Crew' ? 'Stunts': '' || person?.known_for_department == 'Art' ? 'Art Department': '' || person?.known_for_department == 'Visual Effects' ? 'VFX Artist': '' || person?.known_for_department == 'Lighting' ? 'Lighting Artist': '' || person?.known_for_department == 'Costume & Make-Up' ? 'Costume Designer': '';
+  const res = 
+    cast.map((cast)=>(
+    {
+    
+    year:cast?.release_date?.substring(0,4),
+    title:cast?.title,
+    character:cast?.character}))
+  
+  console.log(res)
   return (
     <div className='mt-8'>
-        <p>hello {person.name}</p>
+        <h1> {person.name}</h1>
         <p> {person?.gender==1 && person?.known_for_department == 'Acting'  ? 'Actress' : dept }</p>
         <div className='flex gap-2 '><span>Born</span> <Dayjs res={person}/> </div>
         <div className='md:flex  px-2 gap-2 w-full'>
@@ -58,29 +71,32 @@ const page = async ({params}) => {
               <Test key={res.id} results={res}/>  
             ))}
         </div>  
-        <p>Career as {person?.gender==1 && person?.known_for_department == 'Acting'  ? 'Actress' : dept }</p>
-        <Theme>
-        <Table.Root variant='surface'>
-          <Table.Header>
-          <Table.Row>
-            <Table.ColumnHeaderCell>Year</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Title</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Character</Table.ColumnHeaderCell>
-          </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {cast.map((res)=>(
-              <Table.Row key={res.id}>
-                <Table.Cell>{res.release_date?.substring(0,4)}</Table.Cell>
-                <Table.RowHeaderCell>{res.release_date ? res.title : ''}</Table.RowHeaderCell>
-                <Table.Cell>{res.release_date ? res.character : ''}</Table.Cell>
-              </Table.Row> 
-            ))}
-          </Table.Body>
-        </Table.Root>
-        </Theme>
+        <p>Career as {person?.gender==1 && person?.known_for_department == 'Acting' ? 'Actress' : dept }</p>
+        <div className="container mx-auto py-10">
+          <DataTable columns={columns} data={res} />
+        </div> 
     </div>
   )  
 }
 
 export default page
+        // <Theme accentColor='orange' asChild>
+        // <Table.Root variant='surface'>
+        //   <Table.Header>
+        //   <Table.Row>
+        //     <Table.ColumnHeaderCell>Year</Table.ColumnHeaderCell>
+        //     <Table.ColumnHeaderCell>Title</Table.ColumnHeaderCell>
+        //     <Table.ColumnHeaderCell>Character</Table.ColumnHeaderCell>
+        //   </Table.Row>
+        //   </Table.Header>
+        //   <Table.Body >
+        //     {cast.map((res)=>(
+        //       <Table.Row key={res.id}>
+        //         <Table.Cell className='w-10'>{res.release_date?.substring(0,4)}</Table.Cell>
+        //         <Table.RowHeaderCell className='w-44'>{res.release_date ? res.title : ''}</Table.RowHeaderCell>
+        //         <Table.Cell className='w-44'>{res.release_date ? res.character : ''}</Table.Cell>
+        //       </Table.Row> 
+        //     ))}
+        //   </Table.Body>
+        // </Table.Root>
+        // </Theme>

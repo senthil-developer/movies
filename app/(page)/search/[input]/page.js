@@ -14,8 +14,8 @@ const {results} = movie;
      {
       results.map((movie) =>{
           return(
-          <div key={movie.id} className=' flex flex-col justify-evenly  my-8 mx-auto border-2 border-pink-500 shadow-sm '>
-          <Link href={`/movie/${movie.id}`}>
+          <div key={movie.id} className='flex flex-col justify-evenly  my-8 mx-auto border-2 border-pink-500 shadow-sm '>
+          <Link href={{pathname : `movie/${movie.id}`,query : {name : `${movie.name || movie.title}`},}}>
           <div className='relative w-[220px] h-[300px]  rounded-full'> 
             <Image src={movie.poster_path ? `https://image.tmdb.org/t/p/original${movie.poster_path}` : '/defaultImage.jfif'} alt={movie.title} width={220} height={300}  placeholder='blur' blurDataURL='/logo1.png' style={{objectFit:'fill',width:'220px',height:'300px'}} className=' w-auto h-auto  '/>
           </div> 

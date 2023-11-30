@@ -7,7 +7,7 @@ export async function generateMetadata({params}){
   const image = res.poster_path.slice(1)
   const url = `https://movieuniverse.vercel.app/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${image}&w=640&q=75`
   return {
-    title: res.title,
+    title: `${res.title} | Movie`,
     description: res.overview,
     openGraph: {
       images: [url],
