@@ -1,10 +1,8 @@
-import Career from '@/components/Career';
+import React from 'react'
 import Dayjs from '@/components/Dayjs';
 import { fetchData } from '@/components/FetchData';
 import Test from '@/components/Test';
-import { Table, Theme } from '@radix-ui/themes';
 import Image from 'next/image';
-import React from 'react'
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
 
@@ -43,7 +41,7 @@ const page = async ({params}) => {
   const know_for = combinedCredit.cast.slice(0,15);
   const cast = combinedCredit.cast.sort(compare);
   const dept = person?.known_for_department == 'Acting' ? 'Actor': '' || person?.known_for_department == 'Writing' ? 'Writer': '' || person?.known_for_department == 'Directing' ? 'Director': '' || person?.known_for_department == 'Editing' ? 'Editor': '' || person?.known_for_department == 'Production' ? 'Producer': '' || person?.known_for_department == 'Sound' ? 'Music Composer': '' || person?.known_for_department == 'Camera' ? 'Cinematographer': '' || person?.known_for_department == 'Crew' ? 'Stunts': '' || person?.known_for_department == 'Art' ? 'Art Department': '' || person?.known_for_department == 'Visual Effects' ? 'VFX Artist': '' || person?.known_for_department == 'Lighting' ? 'Lighting Artist': '' || person?.known_for_department == 'Costume & Make-Up' ? 'Costume Designer': '';
-  const res = column
+  const res = 
     cast.map((cast)=>(
     {
     id:cast.id,
@@ -80,23 +78,4 @@ const page = async ({params}) => {
 }
 
 export default page
-        // <Theme accentColor='orange' asChild>
-        // <Table.Root variant='surface'>
-        //   <Table.Header>
-        //   <Table.Row>
-        //     <Table.ColumnHeaderCell>Year</Table.ColumnHeaderCell>
-        //     <Table.ColumnHeaderCell>Title</Table.ColumnHeaderCell>
-        //     <Table.ColumnHeaderCell>Character</Table.ColumnHeaderCell>
-        //   </Table.Row>
-        //   </Table.Header>
-        //   <Table.Body >
-        //     {cast.map((res)=>(
-        //       <Table.Row key={res.id}>
-        //         <Table.Cell className='w-10'>{res.release_date?.substring(0,4)}</Table.Cell>
-        //         <Table.RowHeaderCell className='w-44'>{res.release_date ? res.title : ''}</Table.RowHeaderCell>
-        //         <Table.Cell className='w-44'>{res.release_date ? res.character : ''}</Table.Cell>
-        //       </Table.Row> 
-        //     ))}
-        //   </Table.Body>
-        // </Table.Root>
-        // </Theme>
+        

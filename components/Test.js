@@ -13,7 +13,7 @@ const Test = ({results}) => {
             <Image src={results.poster_path || results.profile_path ? `https://image.tmdb.org/t/p/original${results.poster_path||results.profile_path}`: "/defaultImage.jfif"} width={200} height={300}  style={{objectFit:'cover',width:'200px',height:'300px'}} alt={results.title || results.name || 'image not available'} className='rounded-lg '  placeholder='blur'  blurDataURL={'/default.png'}/>
           </div>
           <div className='text-sm'>
-            <Title res={results} length={[11,23]}  />
+            <Title res={results} length={[14,16]}  />
           </div>
         </Link>
       </Suspense>
