@@ -8,6 +8,9 @@ import {loading} from './Loading';
 const Tab = ({path}) => {
     const [activeTab, setActiveTab] = useState('day'); 
     const [data, setData] = useState();
+    const handleTabChange = (tab)=>{
+        setActiveTab(tab === 'day' ? 'day' : 'week')
+    }
     useEffect(() => {
         const fetch = fetchData(`trending/${path}/${activeTab}`,'').then((res)=>{setData(res.results)}); 
     },[activeTab])
@@ -16,7 +19,7 @@ const Tab = ({path}) => {
         <>
             <div className='w-full rounded-full  flex items-center justify-between p-2 ' >
                 <h2>Trending {path === 'tv' ? 'series' : path}</h2>
-                <SwitchTab data={['day','week']} onTab={(tab)=>setActiveTab(tab === 'day' ? 'day' : 'week')} />
+                <SwitchTab data={['day','week']} onTab={handleTabChange} />
             </div>
             <div className='w-full scroll-x flex gap-3'>
             {results?.map((results)=>(
