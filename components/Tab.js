@@ -1,31 +1,28 @@
 'use client'
-import {useState,useEffect} from 'react'
+import {useState,useEffect, Suspense} from 'react'
 import SwitchTab from './SwitchTab';
 import { fetchData } from './FetchData';
 import Test from './Test';
-import Image from 'next/image';
+import {loading} from './Loading';
 
-const Tab = () => {
-    const [activeTab, setActiveTab] = useState('day');
+const Tab = ({path}) => {
+    const [activeTab, setActiveTab] = useState('day'); 
     const [data, setData] = useState();
-    const [initialRender, setInitialRender] = useState(true);
-    const handleTabChange = (tab) => {
-        setActiveTab( tab === 'day' ? 'day' : 'week');
-    }
     useEffect(() => {
-        if(initialRender){
-            setInitialRender(false)
-            fetchData(`trending/movie/${activeTab}`,'').then((res)=>{setData(res.results)}); 
-        }
-    },[data,initialRender])
+        const fetch = fetchData(`trending/${path}/${activeTab}`,'').then((res)=>{setData(res.results)}); 
+    },[activeTab])
     const results = data
     return (
         <>
             <div className='w-full rounded-full  flex items-center justify-between p-2 ' >
-                <SwitchTab data={['day','week']} onTab={handleTabChange} />
+                <h2>Trending {path === 'tv' ? 'series' : path}</h2>
+                <SwitchTab data={['day','week']} onTab={(tab)=>setActiveTab(tab === 'day' ? 'day' : 'week')} />
             </div>
-            <div className='w-full scroll-x flex gap-3 '>
-               {results ? <Test results={results}/> : 'wtf'}
+            <div className='w-full scroll-x flex gap-3'>
+            <Suspense fallback={loading}>
+               {results?.map((results)=>(
+                <Test key={results.id} results={results}/>))} 
+             </Suspense>  
             </div>
         </>    
     )

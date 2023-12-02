@@ -41,17 +41,17 @@ const page = async ({params}) => {
   const movieCredit = await fetchData(`person/${params.id}/movie_credits`,'')
   const tvCredit = await fetchData(`person/${params.id}/tv_credits`,'')
   const know_for = combinedCredit.cast.slice(0,15);
-  const cast = movieCredit.cast.sort(compare);
+  const cast = combinedCredit.cast.sort(compare);
   const dept = person?.known_for_department == 'Acting' ? 'Actor': '' || person?.known_for_department == 'Writing' ? 'Writer': '' || person?.known_for_department == 'Directing' ? 'Director': '' || person?.known_for_department == 'Editing' ? 'Editor': '' || person?.known_for_department == 'Production' ? 'Producer': '' || person?.known_for_department == 'Sound' ? 'Music Composer': '' || person?.known_for_department == 'Camera' ? 'Cinematographer': '' || person?.known_for_department == 'Crew' ? 'Stunts': '' || person?.known_for_department == 'Art' ? 'Art Department': '' || person?.known_for_department == 'Visual Effects' ? 'VFX Artist': '' || person?.known_for_department == 'Lighting' ? 'Lighting Artist': '' || person?.known_for_department == 'Costume & Make-Up' ? 'Costume Designer': '';
-  const res = 
+  const res = column
     cast.map((cast)=>(
     {
-    
-    year:cast?.release_date?.substring(0,4),
+    id:cast.id,
+    year:cast?.release_date?.substring(0,4) ,
     title:cast?.title,
-    character:cast?.character}))
-  
-  console.log(res)
+    character:cast.media_type === 'movie' ? cast?.character : undefined}
+))
+   console.log(res)
   return (
     <div className='mt-8'>
         <h1> {person.name}</h1>

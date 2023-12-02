@@ -12,7 +12,7 @@ const SwitchTab = ({data,onTab}) => {
     onTab(tab,index)
   }
   return (
-    <div className='relative flex items-center justify-between w-full'>
+    <div className='relative flex items-center'>
         {data.map((tab,index)=>(
             <div key={index} className={`w-[50px] h-[30px] rounded-full  cursor-pointer flex justify-center items-center z-10 ${(index==selectedTab)?"bg-red-500":""}`} onClick={()=>activeTab(tab,index)}>
                 {tab}
