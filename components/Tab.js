@@ -19,10 +19,8 @@ const Tab = ({path}) => {
                 <SwitchTab data={['day','week']} onTab={(tab)=>setActiveTab(tab === 'day' ? 'day' : 'week')} />
             </div>
             <div className='w-full scroll-x flex gap-3'>
-            <Suspense fallback={loading}>
-               {results?.map((results)=>(
-                <Test key={results.id} results={results}/>))} 
-             </Suspense>  
+            {results.map((results)=>(
+            <Test key={results.id} results={results}/>))}  
             </div>
         </>    
     )
