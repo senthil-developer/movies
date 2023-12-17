@@ -1,13 +1,10 @@
 'use client'
 import { ThemeProvider} from 'next-themes'
-// import { Theme } from '@radix-ui/themes'
 
 const Provider = ({children}) => {
   return (
-    <ThemeProvider enableSystem={true} attribute='class' >
+    <ThemeProvider enableSystem defaultTheme='system' attribute='class' >
             {children}
-        {/* <Theme>
-        </Theme> */}
     </ThemeProvider>
   )
 }
