@@ -25,14 +25,14 @@ export const page = async () => {
           <div className='text-3xl font-bold  text-center'>Welcome to <h1>MOVIE UNIVERSE</h1>
           </div>
         </div>
-        <div className='w-full'>
+        <div>
           <Tab path='movie' />
         </div>
         <div>
-          <Tab path='tv' />
+          <Tab path='person' />
         </div>
         <div>
-          <Tab path='person' />
+          <Tab path='tv' />
         </div>
         <Navbar/>
     </div>
