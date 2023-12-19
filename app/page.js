@@ -29,10 +29,10 @@ export const page = async () => {
           <Tab path='movie' />
         </div>
         <div>
-          <Tab path='person' />
-        </div>
-        <div>
           <Tab path='tv' />
+        </div>
+        <div className='block'>
+          <Tab path='person' />
         </div>
         <Navbar/>
     </div>
