@@ -12,17 +12,16 @@ const Tab = ({path}) => {
         setActiveTab(tab ? tab : 'day')
     }
     useEffect(() => {
-        fetchData(`trending/${path}/${activeTab ? activeTab : 'day'}`).then((res)=>{setData(res.results)}); 
+        fetchData(`trending/${path}/${activeTab == 'week' ? 'week' : 'day'}`).then((res)=>{setData(res.results)}); 
     },[activeTab])
-    console.log(`${path} : ${activeTab}`)    
     const results = data
     return (
         <>
-            <div className='w-full rounded-full  flex items-center justify-between p-2 ' >
+            <div className='w-full rounded-full  flex items-center justify-between p-2 h-auto' >
                 <h2>Trending {path === 'tv' ? 'series' : path}</h2>
                 <SwitchTab data={['day','week']} onTab={handleTabChange} />
             </div>
-            <div className='w-full scroll-x flex gap-3'>
+            <div className='w-full scroll-x flex gap-3 h-auto'>
             {results?.map((result)=>(
             result ?  <Test key={result.id} results={result}/>
             : <SkeletonLoading/>
