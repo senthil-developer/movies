@@ -3,7 +3,7 @@ import {useState,useEffect, Suspense} from 'react'
 import SwitchTab from './SwitchTab';
 import { fetchData } from './FetchData';
 import Test from './Test';
-import {loading} from './Loading';
+import SkeletonLoading from './SkeletonLoading';
 
 const Tab = ({path}) => {
     const [activeTab, setActiveTab] = useState('day'); 
@@ -22,8 +22,10 @@ const Tab = ({path}) => {
                 <SwitchTab data={['day','week']} onTab={handleTabChange} />
             </div>
             <div className='w-full scroll-x flex gap-3'>
-            {results?.map((results)=>(
-            <Test key={results.id} results={results}/>))}  
+            {results?.map((result)=>(
+            result ?  <Test key={result.id} results={result}/>
+            : <SkeletonLoading/>
+            ))}
             </div>
         </>    
     )

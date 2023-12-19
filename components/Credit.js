@@ -13,7 +13,7 @@ const topCast = cast.slice(0,14);
                 <div className='flex flex-col h-auto gap-1' key={cast.id}>
                     <Link href={{pathname: `/person/${cast.id}`, query: { name: `${cast.name}` },}}  className='text-xs font-bold'> 
                     <div className='flex items-center relative w-[150px] h-[150px] mx-2 rounded-full'> 
-                        <Image src={cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}`: "/defaultImage.jfif"} width={150} height={150}  style={{objectFit:'cover',width:'150px',height:'150px'}} alt={cast.name} className='rounded-full object-top'/>
+                        <Image src={cast.profile_path ? `https://image.tmdb.org/t/p/original${cast.profile_path}`: "/default.png"} width={150} height={150}  style={{objectFit:'cover',width:'150px',height:'150px'}} alt={cast.name} className='rounded-full object-top'/>
                     </div>
                     </Link>
                     <Link href={{pathname: `/person/${cast.id}`, query: { name: `${cast.name}` },}} className='text-xs font-bold'> 

@@ -11,7 +11,7 @@ const page = async ({id}) => {
 const res   = await fetchData(id)
 const video = await fetchData(`${id}/videos`)
 const credit = await fetchData(`${id}/credits`)
-const bgPath = await res.backdrop_path.slice(1)
+const bgPath = await res.backdrop_path?.slice(1)
 const bg = await res.backdrop_path ? `/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${bgPath}&w=1200&q=99`: "/defaultPoster.jfif"
 const hourToMins = (totalMinutes) => {
   const hour = Math.floor(totalMinutes / 60);
@@ -19,10 +19,10 @@ const hourToMins = (totalMinutes) => {
   return `${hour}h ${min}m`;
 }  
   return (
-    <div className='ml-2 ' >
-      <div className='w-full h-96 bg-cover rounded-md bg-center z-10 ' style={{backgroundImage: `url(${bg})` , backgroundRepeat:'no-repeat' , backgroundPosition:'none'}}>
-        <div className=' ml-8 pt-11 relative w-[170px] h-[120px] sm:w-[150px] sm:h-[230px] md:[w-180px] md:h-[250px] rounded-lg'>   
-            <Image src={res.poster_path || res.profile_path ? `https://image.tmdb.org/t/p/original${res.poster_path||res.profile_path}`: "/defaultImage.jfif"} width={200} height={300}  style={{objectFit:'cover',width:'200px',height:'300px'}} alt={res.title || res.name} priority={false} className='rounded-lg '  placeholder='blur'  blurDataURL='/default.png'/>
+    <div className='pl-2' >
+      <div className='w-full h-96 md:h-[500px] bg-cover rounded-md bg-center z-10' style={{backgroundImage: `url(${bg})` , backgroundRepeat:'no-repeat' , backgroundPosition:'none'}}>
+        <div className='ml-6 pt-[135px] relative w-[150px] h-[100px] sm:w-[150px] sm:h-[130px] md:w-[220px] md:h-[250px] rounded-lg'>   
+            <Image src={res.poster_path || res.profile_path ? `https://image.tmdb.org/t/p/original${res.poster_path||res.profile_path}`: "/default.png"} width={300} height={250}  style={{objectFit:'cover',width:'auto',height:'auto'}} alt={res.title||res.name} className='rounded-lg'  placeholder='blur'  blurDataURL='/default.png'/>
         </div>
       </div>
       

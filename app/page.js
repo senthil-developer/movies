@@ -20,7 +20,7 @@ export const page = async () => {
   const bgPath = image.backdrop_path?.slice(1)
   const bg = image.backdrop_path ? `_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${bgPath}&w=1200&q=99`: "/defaultPoster.jfif"
   return (
-    <div className='w-full h-screen'>
+    <div className='w-full h-full'>
         <div className='w-full h-96 sm:h-screen flex justify-center items-center bg-cover bg-center'  style={{backgroundImage: `url(${bg})` , backgroundRepeat:'no-repeat' , backgroundPosition:'none'}}>
           <div className='text-3xl font-bold  text-center'>Welcome to <h1>MOVIE UNIVERSE</h1>
           </div>
