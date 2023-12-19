@@ -1,10 +1,10 @@
-import Navbar from "./Navbar"
-export default function RootLayout({ children }) {
+import Navbar from "@/components/Navbar"
+export default function PersonLayout({ children }) {
   
   return (
       <>   
-              {children}
-              <Navbar/>
-      </>
+          {children}
+          <Navbar url='person'/>
+      </> 
   )
 }

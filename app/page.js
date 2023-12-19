@@ -34,7 +34,7 @@ export const page = async () => {
         <div>
           <Tab path='person' />
         </div>
-        <Navbar/>
+        <Navbar url='/' />
     </div>
   )
 }

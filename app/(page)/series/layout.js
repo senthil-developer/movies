@@ -1,10 +1,10 @@
-import Navbar from "./Navbar"
-export default function RootLayout({ children }) {
+import Navbar from "@/components/Navbar"
+export default function SeriesLayout({ children }) {
   
   return (
       <>   
           {children}
-          <Navbar/>
-      </>
+          <Navbar url='series'/>
+      </> 
   )
 }
