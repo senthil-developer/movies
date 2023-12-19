@@ -31,7 +31,7 @@ export const page = async () => {
         <div>
           <Tab path='tv' />
         </div>
-        <div className='block'>
+        <div>
           <Tab path='person' />
         </div>
         <Navbar/>
