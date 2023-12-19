@@ -9,7 +9,7 @@ const Tab = ({path}) => {
     const [activeTab, setActiveTab] = useState('day'); 
     const [data, setData] = useState();
     const handleTabChange = (tab)=>{
-        setActiveTab(tab == 'week' ? 'week' : 'day')
+        setActiveTab(tab ? tab : 'day')
     }
     useEffect(() => {
         fetchData(`trending/${path}/${activeTab}`,'').then((res)=>{setData(res.results)}); 
