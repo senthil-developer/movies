@@ -14,6 +14,7 @@ const Tab = ({path}) => {
     useEffect(() => {
         fetchData(`trending/${path}/${activeTab ? activeTab : 'day'}`).then((res)=>{setData(res.results)}); 
     },[activeTab])
+    console.log(`${path} : ${activeTab}`)    
     const results = data
     return (
         <>
