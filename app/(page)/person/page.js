@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import LoadMore from "@/components/LoadMore";
+
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div className="w-full h-full overflow-x-hidden">
+      <LoadMore/>
+    </div>
+  );
+};
 
-export default page
+export default page;
