@@ -8,13 +8,11 @@ const Test = ({ results, mediaType }) => {
     <div className="flex gap-3 ml-2 my-2 w-full h-full">
       <Link
         href={{
-          pathname: `/${mediaType === "tv" ? "series" : mediaType}/${
-            results.id
-          }`,
+          pathname: `/${mediaType === "tv" ? "series" : "movie"}/${results.id}`,
           query: { name: `${String(results?.name || results?.title)}` },
         }}
       >
-        <div className="flex flex-col relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px] md:h-[250px] rounded-lg">
+        <div className="flex flex-col relative w-[180px] h-[230px] md:[w-200px] md:h-[250px] rounded-lg">
           <Image
             src={
               results.poster_path || results.profile_path
@@ -23,9 +21,12 @@ const Test = ({ results, mediaType }) => {
                   }`
                 : "/defaultImage.jfif"
             }
-            width={200}
-            height={300}
-            style={{ objectFit: "cover", width: "200px", height: "300px" }}
+            fill
+            style={{
+              objectFit: "cover",
+              borderTopRightRadius: "16px",
+              borderTopLeftRadius: "16px",
+            }}
             alt={results.title || results.name || "image not available"}
             className="rounded-lg "
             placeholder="blur"

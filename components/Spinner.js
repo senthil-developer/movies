@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./spinner.module.css";
+import "./spinner.scss";
 
 const Spinner = ({ initial }) => {
   return (

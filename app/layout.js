@@ -1,27 +1,36 @@
-import './globals.css'
-import './scroll.css'
-import { Poppins } from 'next/font/google'
-import MainNavbar from '@/components/MainNavbar'
-import Provider from '@/components/Provider'
+import { Poppins } from "next/font/google";
+import MainNavbar from "@/components/MainNavbar";
+import Provider from "@/components/Provider";
+import "./globals.css";
+import "./scroll.css";
+
 const poppins = Poppins({
-  subsets: ['latin'] ,
-  weight : ["500", "600", "700", "800", "900"]
- })
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800", "900"],
+});
+
 export const metadata = {
-  title: 'movie universe',
-  description: 'tech stack - next js 13 , react js , tailwind css',
-}
+  title: {
+    default: "Movie Universe",
+    template: "%s | Movie Universe",
+  },
+  description: "Latest movies , series , trending movies,person,history",
+  keywords:
+    "movie,series,trending,person,history,movieuniverse,movieuniverse.vercel.app,latest movies,latest series,latest people,actor history,actress history,",
+  openGraph: {
+    images: ["/logo1.png"],
+  },
+};
 
 export default function RootLayout({ children }) {
-  
   return (
-    <html lang="en" suppressHydrationWarning  className='scroll-y'>
-      <body className={`${poppins.className} antialiased`}> 
-      <Provider>
-          <MainNavbar/>  
+    <html lang="en" suppressHydrationWarning className="scroll-y">
+      <body className={`${poppins.className} antialiased`}>
+        <Provider>
+          <MainNavbar />
           {children}
-      </Provider>
+        </Provider>
       </body>
     </html>
-  )
+  );
 }

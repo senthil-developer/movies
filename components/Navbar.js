@@ -11,7 +11,7 @@ import { PiTelevisionSimple, PiTelevisionSimpleFill } from "react-icons/pi";
 const Navbar = ({ url }) => {
   return (
     // mobile navbar
-    <nav className="w-full flex header fixed bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50">
+    <nav className="w-full mt-10 flex header fixed bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50">
       <Link
         className={
           url === "/"

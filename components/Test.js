@@ -14,7 +14,7 @@ const Test = ({ results }) => {
           query: { name: `${String(results?.name || results?.title)}` },
         }}
       >
-        <div className="flex flex-col relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px] md:h-[250px] z-10 rounded-lg">
+        <div className="relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px]  md:h-[250px] z-10 rounded-lg">
           <Image
             src={
               results.poster_path || results.profile_path
@@ -23,9 +23,12 @@ const Test = ({ results }) => {
                   }`
                 : "/defaultImage.jfif"
             }
-            width={200}
-            height={300}
-            style={{ objectFit: "cover", width: "200px", height: "300px" }}
+            fill
+            style={{
+              objectFit: "cover",
+              borderTopLeftRadius: "16px",
+              borderTopRightRadius: "16px",
+            }}
             alt={results.title || results.name || "image not available"}
             className="rounded-lg"
             placeholder="blur"

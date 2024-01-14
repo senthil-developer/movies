@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
-import "./explore.module.scss";
+import "./explore.scss";
 import { fetchDataFromAxios } from "../utils/api";
 import useFetch from "../hooks/useFetch";
 import Spinner from "../Spinner";
@@ -136,7 +136,7 @@ const Explore = () => {
         <>
           {data?.results?.length > 0 ? (
             <InfiniteScroll
-              className="content"
+              className="content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
               dataLength={data?.results?.length || []}
               next={fetchNextPageData}
               hasMore={pageNum <= data?.total_pages}
@@ -145,7 +145,7 @@ const Explore = () => {
               {data?.results?.map((item, index) => {
                 if (item.media_type === "person") return;
                 return (
-                  <MovieCard key={index} results={item} media={mediaType} />
+                  <MovieCard key={index} results={item} mediaType={mediaType} />
                 );
               })}
             </InfiniteScroll>

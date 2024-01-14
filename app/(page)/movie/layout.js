@@ -1,10 +1,9 @@
-import Navbar from "@/components/Navbar"
+import Navbar from "@/components/Navbar";
 export default function MovieLayout({ children }) {
-  
   return (
-      <>   
-          {children}
-          <Navbar url='movie'/>
-      </> 
-  )
+    <>
+      {children}
+      <Navbar url="movie" />
+    </>
+  );
 }
