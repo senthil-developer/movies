@@ -32,7 +32,7 @@ function LoadMore() {
         >
           Popular peoples
         </motion.h1>
-        <section className="mt-6 grid w-full lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5  px-10">
+        <section className="mt-6 grid w-full lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5  px-5">
           {data?.map((item) => {
             return (
               <MovieCard key={item.id} results={item} mediaType={"person"} />

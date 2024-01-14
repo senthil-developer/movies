@@ -16,7 +16,7 @@ const page = async ({ id }) => {
   const similar = await fetchData(`${id}/similar`);
   const recommendations = await fetchData(`${id}/recommendations`);
   const bgPath = await res.backdrop_path?.slice(1);
-  const bg = (await res.backdrop_path)
+  const bg = bgPath
     ? `/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${bgPath}&w=1200&q=99`
     : "/defaultPoster.jfif";
   const hourToMins = (totalMinutes) => {

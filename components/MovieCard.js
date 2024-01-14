@@ -8,7 +8,9 @@ const Test = ({ results, mediaType }) => {
     <div className="flex gap-3 ml-2 my-2 w-full h-full">
       <Link
         href={{
-          pathname: `/${mediaType === "tv" ? "series" : "movie"}/${results.id}`,
+          pathname: `/${mediaType === "tv" ? "series" : mediaType}/${
+            results.id
+          }`,
           query: { name: `${String(results?.name || results?.title)}` },
         }}
       >

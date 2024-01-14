@@ -5,9 +5,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import "./search.scss";
 
-import { fetchDataFromAxios } from "@/components/utils/api";
 import Spinner from "@/components/Spinner";
 import Test from "@/components/Test";
+import { fetchDataFromAxios } from "@/components/utils/api";
 
 const SearchResult = ({ query }) => {
   const [data, setData] = useState(null);

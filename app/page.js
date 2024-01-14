@@ -21,7 +21,7 @@ export const page = async () => {
         }}
       >
         <div className="text-3xl w-[70%] font-bold  text-center">
-          <h1 className="text-transparent bg-clip-text  bg-gradient-to-r from-purple-500  via-pink-500 via-red-400 via-orange-500 via-cyan-500 via-violet-500 to-yellow-500">
+          <h1 className="text-transparent bg-clip-text  bg-gradient-to-r from-purple-500  via-violet-500 to-yellow-500">
             Welcome to MOVIE UNIVERSE
           </h1>
         </div>
