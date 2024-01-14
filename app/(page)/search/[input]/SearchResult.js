@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import "./style.scss";
+import "./search.scss";
 
-import { fetchDataFromAxios } from "../../utils/api";
+import { fetchDataFromAxios } from "@/components/utils/api";
 import Spinner from "@/components/Spinner";
 import Test from "@/components/Test";
 
