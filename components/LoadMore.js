@@ -28,11 +28,11 @@ function LoadMore() {
           initial={{ x: 1000 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-6 text-lg text-nowrap ml-5"
+          className="mb-6 text-lg text-nowrap ml-9"
         >
           Popular peoples
         </motion.h1>
-        <section className="mt-6 grid w-full lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5  px-5">
+        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-11 overflow-y-hidden">
           {data?.map((item) => {
             return (
               <MovieCard key={item.id} results={item} mediaType={"person"} />

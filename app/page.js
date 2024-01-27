@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
+import MainNavbar from "@/components/MainNavbar";
 import { fetchData } from "@/components/FetchData";
 import Tab from "@/components/Tab";
 
@@ -12,6 +13,7 @@ export const page = async () => {
     : "/defaultPoster.jfif";
   return (
     <div className="w-full h-full">
+      <MainNavbar />
       <div
         className="w-full h-96 sm:h-screen flex justify-center items-center bg-cover bg-center"
         style={{
@@ -35,7 +37,7 @@ export const page = async () => {
       <div>
         <Tab path="person" />
       </div>
-      <div className="pt-20">
+      <div className="">
         <Navbar url="/" />
       </div>
     </div>

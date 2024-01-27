@@ -56,22 +56,14 @@
         .react-select__value-container {
           .react-select__placeholder,
           .react-select__input-container {
-            color: white;
             margin: 0 10px;
           }
-        }
-        .react-select__single-value {
-          color: white;
         }
         .react-select__multi-value {
           background-color: var(--black3);
           border-radius: 10px;
-          .react-select__multi-value__label {
-            color: white;
-          }
           .react-select__multi-value__remove {
             background-color: transparent;
-            color: white;
             cursor: pointer;
             &:hover {
               color: var(--black-lighter);
@@ -86,18 +78,9 @@
       }
     }
   }
-  .content {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-    margin-bottom: 50px;
-    @include md {
-      gap: 20px;
-    }
-    .movieCard {
-      .posterBlock {
-        margin-bottom: 30px;
-      }
-    }
+  .content::-webkit-scrollbar {
+    overflow-x: hidden;
+    display: none;
+    scroll-behavior: inherit;
   }
 }

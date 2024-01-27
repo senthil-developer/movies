@@ -10,8 +10,10 @@ import useFetch from "./hooks/useFetch";
 import VideoSection from "./videoSection/VideoSection";
 
 const page = async ({ id }) => {
+  const ids = await id.indexOf("/");
+  const path = await id.substring(0, ids);
+  console.log(path);
   const res = await fetchData(id);
-  const { data, loading } = useFetch(`/${id}/videos`);
   const credit = await fetchData(`${id}/credits`);
   const similar = await fetchData(`${id}/similar`);
   const recommendations = await fetchData(`${id}/recommendations`);
@@ -94,24 +96,26 @@ const page = async ({ id }) => {
         </p>
         <Credit credit={credit} />
       </div>
-      <p>Official Videos</p>
-      <VideoSection data={data} loading={loading} />
-      <section>
-        <p>Similar {res.first_air_date ? "Series" : "Movies"}</p>
-        <div className="w-full overflow-x-scroll">
-          {similar.results.map((item) => {
-            <MovieCard results={item} mediaType={"tv"} key={item.id} />;
-          })}
-        </div>
-      </section>
-      <section>
-        <p>Recommended {res.first_air_date ? "Series" : "Movies"}</p>
-        <div className="w-full overflow-x-scroll">
-          {recommendations.results.map((item) => {
-            <MovieCard results={item} mediaType={"tv"} key={item.id} />;
-          })}
-        </div>
-      </section>
+      {Object.keys(similar.results).length > 0 && (
+        <section>
+          <p>Similar {res.first_air_date ? "Series" : "Movies"}</p>
+          <div className="flex w-full overflow-x-scroll gap-5 scroll-x">
+            {similar.results.map((item) => (
+              <MovieCard results={item} mediaType={path} key={item.id} />
+            ))}
+          </div>
+        </section>
+      )}
+      {Object.keys(recommendations.results).length > 0 && (
+        <section>
+          <p>Recommended {res.first_air_date ? "Series" : "Movies"}</p>
+          <div className=" flex w-full overflow-x-scroll gap-5  scroll-x">
+            {recommendations.results.map((item) => (
+              <MovieCard results={item} mediaType={path} key={item.id} />
+            ))}
+          </div>
+        </section>
+      )}
       {res.homepage && (
         <Link
           href={res.homepage}

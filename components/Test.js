@@ -36,7 +36,7 @@ const Test = ({ results }) => {
           />
         </div>
         <div className="text-sm">
-          <Title res={results} length={[12, 16]} />
+          <Title res={results} length={[12, 16, 16]} />
         </div>
       </Link>
     </div>

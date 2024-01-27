@@ -10,6 +10,7 @@ import { fetchDataFromAxios } from "../utils/api";
 import useFetch from "../hooks/useFetch";
 import Spinner from "../Spinner";
 import MovieCard from "../MovieCard";
+import { motion } from "framer-motion";
 
 let filters = {};
 
@@ -98,13 +99,17 @@ const Explore = () => {
     setPageNum(1);
     fetchInitialData();
   };
-
   return (
     <div className="explorePage">
       <div className="pageHeader">
-        <div className="pageTitle">
-          {mediaType === "tv" ? "Explore Series Shows" : "Explore Movies"}
-        </div>
+        <motion.h1
+          initial={{ x: 1000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6 text-lg text-nowrap ml-9"
+        >
+          {mediaType === "tv" ? "Explore Series" : "Explore Movies"}
+        </motion.h1>
         <div className="filters">
           <Select
             isMulti
@@ -116,7 +121,7 @@ const Explore = () => {
             getOptionValue={(option) => option.id}
             onChange={onChange}
             placeholder="Select genres"
-            className="react-select-container genresDD"
+            className="react-select-container genresDD dark:text-black "
             classNamePrefix="react-select"
           />
           <Select
@@ -126,7 +131,7 @@ const Explore = () => {
             onChange={onChange}
             isClearable={true}
             placeholder="Sort by"
-            className="react-select-container sortbyDD"
+            className="react-select-container sortbyDD dark:text-black "
             classNamePrefix="react-select"
           />
         </div>
@@ -136,18 +141,20 @@ const Explore = () => {
         <>
           {data?.results?.length > 0 ? (
             <InfiniteScroll
-              className="content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
+              className="content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-11 overflow-x-hidden"
               dataLength={data?.results?.length || []}
               next={fetchNextPageData}
               hasMore={pageNum <= data?.total_pages}
               loader={<Spinner />}
             >
+              {/* <div className=""> */}
               {data?.results?.map((item, index) => {
                 if (item.media_type === "person") return;
                 return (
                   <MovieCard key={index} results={item} mediaType={mediaType} />
                 );
               })}
+              {/* </div> */}
             </InfiniteScroll>
           ) : (
             <span className="resultNotFound">Sorry, Results not found!</span>

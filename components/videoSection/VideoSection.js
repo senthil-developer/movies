@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import "./section.scss";
 import VideoPopup from "./VideoPopup";
 import { FaPlay } from "react-icons/fa";
+import useFetch from "../hooks/useFetch";
 
-const VideosSection = ({ data, loading }) => {
+const VideosSection = ({ video }) => {
+  const { data, loading } = useFetch(video);
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
 

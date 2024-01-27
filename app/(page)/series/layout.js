@@ -1,10 +1,12 @@
-import Navbar from "@/components/Navbar"
+import Navbar from "@/components/Navbar";
+import MainNavbar from "@/components/MainNavbar";
 export default function SeriesLayout({ children }) {
-  
+  const url = "series";
   return (
-      <>   
-          {children}
-          <Navbar url='series'/>
-      </> 
-  )
+    <>
+      <MainNavbar url={url} />
+      {children}
+      <Navbar url={url} />
+    </>
+  );
 }

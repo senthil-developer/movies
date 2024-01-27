@@ -26,10 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-y">
       <body className={`${poppins.className} antialiased`}>
-        <Provider>
-          <MainNavbar />
-          {children}
-        </Provider>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );
