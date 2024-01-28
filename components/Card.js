@@ -12,7 +12,6 @@ import VideoSection from "./videoSection/VideoSection";
 const page = async ({ id }) => {
   const ids = await id.indexOf("/");
   const path = await id.substring(0, ids);
-  console.log(path);
   const res = await fetchData(id);
   const credit = await fetchData(`${id}/credits`);
   const similar = await fetchData(`${id}/similar`);
@@ -55,77 +54,80 @@ const page = async ({ id }) => {
           />
         </div>
       </div>
-
-      <h1 className="text-2xl">{res.title || res.name}</h1>
-      <h4 className="text-sm text-gray-300 ">
-        original title : {res.original_title || res.original_name}
-      </h4>
-      <p> {res.overview ? `Overview : ${res.overview}` : ""}</p>
-      {res?.budget == 0 || res?.created_by ? (
-        ""
-      ) : (
-        <p>Budget : &#36;{res.budget} </p>
-      )}
-      <div className="flex ">
-        <div className="mt-2">Genre: </div>
-        <div className="flex flex-wrap">
-          {res.genres.map((item) => {
-            return (
-              <div key={item.id} className="p-1 m-1 rounded-md  bg-red-300">
-                {item.name}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div className="flex gap-2">
-        <div>Status : {res.status ? res.status : "no info"}</div>
-        <div>
-          Release date :{" "}
-          {res.release_date || res.first_air_date
-            ? dayjs(res.release_date || res.first_air_date).format("D MMM YYYY")
-            : "no info"}
-        </div>
-      </div>
-      <div className="flex gap-2">
-        <div>{res.runtime ? "RunTime :" + hourToMins(res?.runtime) : ""}</div>
-      </div>
-      <div className="group">
-        <p className="text-xl font-bold group-visited:text-slate-500">
-          Top Cast
-        </p>
-        <Credit credit={credit} />
-      </div>
-      {Object.keys(similar.results).length > 0 && (
-        <section>
-          <p>Similar {res.first_air_date ? "Series" : "Movies"}</p>
-          <div className="flex w-full overflow-x-scroll gap-5 scroll-x">
-            {similar.results.map((item) => (
-              <MovieCard results={item} mediaType={path} key={item.id} />
-            ))}
+      <div className="w-full lg:w-[80%] mx-auto">
+        <h1 className="text-2xl">{res.title || res.name}</h1>
+        <h4 className="text-sm text-gray-300 ">
+          original title : {res.original_title || res.original_name}
+        </h4>
+        <p> {res.overview ? `Overview : ${res.overview}` : ""}</p>
+        {res?.budget == 0 || res?.created_by ? (
+          ""
+        ) : (
+          <p>Budget : &#36;{res.budget} </p>
+        )}
+        <div className="flex ">
+          <div className="mt-2">Genre: </div>
+          <div className="flex flex-wrap">
+            {res.genres.map((item) => {
+              return (
+                <div key={item.id} className="p-1 m-1 rounded-md  bg-red-300">
+                  {item.name}
+                </div>
+              );
+            })}
           </div>
-        </section>
-      )}
-      {Object.keys(recommendations.results).length > 0 && (
-        <section>
-          <p>Recommended {res.first_air_date ? "Series" : "Movies"}</p>
-          <div className=" flex w-full overflow-x-scroll gap-5  scroll-x">
-            {recommendations.results.map((item) => (
-              <MovieCard results={item} mediaType={path} key={item.id} />
-            ))}
+        </div>
+        <div className="flex gap-2">
+          <div>Status : {res.status ? res.status : "no info"}</div>
+          <div>
+            Release date :{" "}
+            {res.release_date || res.first_air_date
+              ? dayjs(res.release_date || res.first_air_date).format(
+                  "D MMM YYYY"
+                )
+              : "no info"}
           </div>
-        </section>
-      )}
-      {res.homepage && (
-        <Link
-          href={res.homepage}
-          target="_black"
-          className="border border-red-700 bg-red-500 flex w-fit items-center"
-        >
-          Watch {res.first_air_date ? "Series" : "Movies"}{" "}
-          <ExternalLinkIcon className="mx-1" />
-        </Link>
-      )}
+        </div>
+        <div className="flex gap-2">
+          <div>{res.runtime ? "RunTime :" + hourToMins(res?.runtime) : ""}</div>
+        </div>
+        <div className="group">
+          <p className="text-xl font-bold group-visited:text-slate-500">
+            Top Cast
+          </p>
+          <Credit credit={credit} />
+        </div>
+        {Object.keys(similar.results).length > 0 && (
+          <section>
+            <p>Similar {res.first_air_date ? "Series" : "Movies"}</p>
+            <div className="flex w-full overflow-x-scroll gap-5 scroll-x">
+              {similar.results.map((item) => (
+                <MovieCard results={item} mediaType={path} key={item.id} />
+              ))}
+            </div>
+          </section>
+        )}
+        {Object.keys(recommendations.results).length > 0 && (
+          <section>
+            <p>Recommended {res.first_air_date ? "Series" : "Movies"}</p>
+            <div className=" flex w-full overflow-x-scroll gap-5  scroll-x">
+              {recommendations.results.map((item) => (
+                <MovieCard results={item} mediaType={path} key={item.id} />
+              ))}
+            </div>
+          </section>
+        )}
+        {res.homepage && (
+          <Link
+            href={res.homepage}
+            target="_black"
+            className="border border-red-700 bg-red-500 flex w-fit items-center"
+          >
+            Watch {res.first_air_date ? "Series" : "Movies"}{" "}
+            <ExternalLinkIcon className="mx-1" />
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

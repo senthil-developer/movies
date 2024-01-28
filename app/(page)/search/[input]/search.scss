@@ -28,3 +28,7 @@
     }
   }
 }
+.searchRes::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: inherit;
+}

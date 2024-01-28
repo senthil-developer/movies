@@ -2,7 +2,8 @@
 import Link from "next/link";
 import { ThemeProvider } from "next-themes";
 import { IoLogoGithub, IoIosMail, IoLogoLinkedin } from "react-icons/io";
-
+import Navbar from "@/components/Navbar";
+import MainNavbar from "@/components/MainNavbar";
 const Provider = ({ children }) => {
   const Links = [
     {
@@ -26,8 +27,11 @@ const Provider = ({ children }) => {
   ];
   return (
     <ThemeProvider enableSystem defaultTheme="system" attribute="class">
-      {children}
-      <footer className="w-full flex flex-col mb-14">
+      <header>
+        <MainNavbar />
+      </header>
+      <main>{children}</main>
+      <footer className="w-full flex flex-col mb-14 mt-5">
         <div className="flex justify-evenly items-center">
           {Links.map((link) => (
             <Link
@@ -44,6 +48,7 @@ const Provider = ({ children }) => {
           movieuniverse@vercel.app &#169; 2024 All Rights Reserved
         </div>
       </footer>
+      <Navbar />
     </ThemeProvider>
   );
 };

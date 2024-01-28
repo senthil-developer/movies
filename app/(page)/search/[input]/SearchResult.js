@@ -47,7 +47,7 @@ const SearchResult = ({ query }) => {
   }, [query]);
 
   return (
-    <div className="searchResultsPage">
+    <div className="searchResultsPage w-full">
       {loading && <Spinner initial={true} />}
       {!loading && (
         <div>
@@ -59,7 +59,7 @@ const SearchResult = ({ query }) => {
                 } of '${query}'`}
               </div>
               <InfiniteScroll
-                className="content"
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-11 overflow-y-hidden searchRes overflow-x-hidden"
                 dataLength={data?.results?.length || []}
                 next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}

@@ -104,18 +104,22 @@ const page = async ({ params }) => {
     character: cast.media_type === "movie" ? cast?.character : undefined,
   }));
   return (
-    <div className="mt-8">
-      <h1> {person.name}</h1>
-      <p>
-        {" "}
-        {person?.gender == 1 && person?.known_for_department == "Acting"
-          ? "Actress"
-          : dept}
-      </p>
-      <div className="flex gap-2 ">
-        <span>Born</span> <Dayjs res={person} />{" "}
-      </div>
-      <div className="md:flex  px-2 gap-2 w-full">
+    <div className="mt-8 mx-auto w-full lg:w-[80%]">
+      <div className=" max-w-fit mx-auto flex gap-10">
+        <div className="my-auto">
+          <span className="flex">
+            Name : <h1> {person.name}</h1>
+          </span>
+          <p>
+            {" Known as : "}
+            {person?.gender == 1 && person?.known_for_department == "Acting"
+              ? "Actress"
+              : dept}
+          </p>
+          <div className="flex gap-2 ">
+            <span>Born : </span> <Dayjs res={person} />
+          </div>
+        </div>
         <div className="relative w-[200px] h-[300px]">
           <Image
             src={

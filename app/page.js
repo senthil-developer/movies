@@ -28,17 +28,19 @@ export const page = async () => {
           </h1>
         </div>
       </div>
-      <div>
-        <Tab path="movie" />
-      </div>
-      <div>
-        <Tab path="tv" />
-      </div>
-      <div>
-        <Tab path="person" />
-      </div>
-      <div className="">
-        <Navbar url="/" />
+      <div className="w-full lg:w-[80%] mx-auto">
+        <section>
+          <Tab path="movie" />
+        </section>
+        <section>
+          <Tab path="tv" />
+        </section>
+        <section>
+          <Tab path="person" />
+        </section>
+        <section className="">
+          <Navbar url="/" />
+        </section>
       </div>
     </div>
   );

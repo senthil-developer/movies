@@ -36,10 +36,8 @@ const Explore = () => {
   const path = usePathname();
   const slice = path.slice(1);
   const mediaType = slice === "series" ? "tv" : slice;
-  console.log(mediaType);
 
   const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
-  console.log(genresData);
 
   const fetchInitialData = () => {
     setLoading(true);
@@ -141,7 +139,7 @@ const Explore = () => {
         <>
           {data?.results?.length > 0 ? (
             <InfiniteScroll
-              className="content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-11 overflow-x-hidden"
+              className="content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 md:pl-20 "
               dataLength={data?.results?.length || []}
               next={fetchNextPageData}
               hasMore={pageNum <= data?.total_pages}

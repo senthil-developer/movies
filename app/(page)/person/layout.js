@@ -1,12 +1,9 @@
-import Navbar from "@/components/Navbar";
-import MainNavbar from "@/components/MainNavbar";
+export const metadata = {
+  title: "person",
+  openGraph: {
+    images: ["/person.png"],
+  },
+};
 export default function PersonLayout({ children }) {
-  const url = "person";
-  return (
-    <>
-      <MainNavbar url={url} />
-      {children}
-      <Navbar url={url} />
-    </>
-  );
+  return <>{children}</>;
 }

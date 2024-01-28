@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { BsSearch } from "react-icons/bs";
 import Link from "next/link";
@@ -7,20 +9,24 @@ import { BiMoviePlay, BiSolidMoviePlay } from "react-icons/bi";
 import { IoPeopleOutline, IoPeopleSharp } from "react-icons/io5";
 import { RiSearchFill } from "react-icons/ri";
 import { PiTelevisionSimple, PiTelevisionSimpleFill } from "react-icons/pi";
+import { usePathname } from "next/navigation";
 
-const Navbar = ({ url }) => {
+const Navbar = () => {
+  const path = usePathname();
+  const splitUrl = path.slice(1);
+  const url = splitUrl.split("/")[0];
   return (
     // mobile navbar
     <nav className="w-full mt-10 flex header fixed bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50">
       <Link
         className={
-          url === "/"
+          url !== "/"
             ? "text-white flex flex-col items-center"
             : "flex flex-col items-center"
         }
         href="/"
       >
-        {url === "/" ? <FaHome size={25} /> : <GoHome size={25} />}Home
+        {url !== "/" ? <FaHome size={25} /> : <GoHome size={25} />}Home
       </Link>
       <Link
         className={

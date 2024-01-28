@@ -11,3 +11,7 @@ body,
 .scroll-x::-webkit-scrollbar {
   display: none;
 }
+.content::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: inherit;
+}

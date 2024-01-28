@@ -1,12 +1,12 @@
-import Navbar from "@/components/Navbar";
-import MainNavbar from "@/components/MainNavbar";
+export const metadata = {
+  title: {
+    default: "Movie",
+    template: "%s | Movie",
+  },
+  openGraph: {
+    images: ["/movie.png"],
+  },
+};
 export default function MovieLayout({ children }) {
-  const url = "movie";
-  return (
-    <>
-      <MainNavbar url={url} />
-      {children}
-      <Navbar url={url} />
-    </>
-  );
+  return <>{children}</>;
 }

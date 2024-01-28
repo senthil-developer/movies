@@ -1,10 +1,12 @@
-import Navbar from "@/components/Navbar"
+export const metadata = {
+  title: {
+    default: "Search",
+    template: "%s | Search",
+  },
+  openGraph: {
+    images: ["/search.png"],
+  },
+};
 export default function SearchLayout({ children }) {
-  
-  return (
-      <>   
-          {children}
-          <Navbar url='search'/>
-      </> 
-  )
+  return <>{children}</>;
 }

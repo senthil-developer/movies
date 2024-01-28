@@ -1,12 +1,9 @@
-import Navbar from "@/components/Navbar";
-import MainNavbar from "@/components/MainNavbar";
+export const metadata = {
+  title: "Series",
+  openGraph: {
+    images: ["/series.png"],
+  },
+};
 export default function SeriesLayout({ children }) {
-  const url = "series";
-  return (
-    <>
-      <MainNavbar url={url} />
-      {children}
-      <Navbar url={url} />
-    </>
-  );
+  return <>{children}</>;
 }

@@ -36,7 +36,7 @@ const Test = ({ results, mediaType }) => {
           />
         </div>
         <div className="text-sm">
-          <Title res={results} length={[12, 16, 20]} />
+          <Title res={results} length={[20, 20, 20]} />
         </div>
       </Link>
     </div>

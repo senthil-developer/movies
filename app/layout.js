@@ -1,5 +1,4 @@
 import { Poppins } from "next/font/google";
-import MainNavbar from "@/components/MainNavbar";
 import Provider from "@/components/Provider";
 import "./globals.css";
 import "./scroll.css";
