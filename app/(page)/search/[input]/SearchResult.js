@@ -8,6 +8,7 @@ import "./search.scss";
 import Spinner from "@/components/Spinner";
 import Test from "@/components/Test";
 import { fetchDataFromAxios } from "@/components/utils/api";
+import Search from "@/components/Search";
 
 const SearchResult = ({ query }) => {
   const [data, setData] = useState(null);
@@ -45,19 +46,19 @@ const SearchResult = ({ query }) => {
     setPageNum(1);
     fetchInitialData();
   }, [query]);
-
+  const search = decodeURIComponent(query);
   return (
     <div className="searchResultsPage w-full">
       {loading && <Spinner initial={true} />}
       {!loading && (
         <div>
+          <div className="pageTitle ml-10">
+            {`Search ${
+              data?.total_results > 1 ? "results" : "result"
+            } of ${search}`}
+          </div>
           {data?.results?.length > 0 ? (
             <>
-              <div className="pageTitle">
-                {`Search ${
-                  data?.total_results > 1 ? "results" : "result"
-                } of '${query}'`}
-              </div>
               <InfiniteScroll
                 className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-11 overflow-y-hidden searchRes overflow-x-hidden"
                 dataLength={data?.results?.length || []}
@@ -71,7 +72,10 @@ const SearchResult = ({ query }) => {
               </InfiniteScroll>
             </>
           ) : (
-            <span className="resultNotFound">Sorry, Results not found!</span>
+            <div className="gap-5 text-2xl w-full h-screen justify-center items-center flex bg-[url('/no-search.png')] bg-no-repeat bg-contain bg-center flex-col">
+              <span>Sorry, Results not found!</span>
+              <Search />
+            </div>
           )}
         </div>
       )}

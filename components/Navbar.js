@@ -20,13 +20,13 @@ const Navbar = () => {
     <nav className="w-full mt-10 flex header fixed bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50">
       <Link
         className={
-          url !== "/"
+          path === "/"
             ? "text-white flex flex-col items-center"
             : "flex flex-col items-center"
         }
         href="/"
       >
-        {url !== "/" ? <FaHome size={25} /> : <GoHome size={25} />}Home
+        {path === "/" ? <FaHome size={25} /> : <GoHome size={25} />}Home
       </Link>
       <Link
         className={

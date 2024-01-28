@@ -38,9 +38,6 @@ export const page = async () => {
         <section>
           <Tab path="person" />
         </section>
-        <section className="">
-          <Navbar url="/" />
-        </section>
       </div>
     </div>
   );

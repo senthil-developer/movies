@@ -1,8 +1,10 @@
 import SearchResult from "./SearchResult";
 
 export async function generateMetadata({ params }) {
+  const query = params.input;
+  const input = query.replace(/%20/, "+");
   return {
-    title: `${params.input}`,
+    title: `${input}`,
   };
 }
 

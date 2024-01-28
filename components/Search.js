@@ -30,7 +30,7 @@ const Search = () => {
         type="text"
         placeholder="search breaking bad"
         className="outline-none
-        text-black w-[200px] bg-white"
+        text-black w-[300px] bg-white"
       />
       <AiOutlineSearch
         onClick={handleSubmit}
