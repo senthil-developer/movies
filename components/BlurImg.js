@@ -10,7 +10,7 @@ export default async function BlurImg({ src, alt }) {
     return Buffer.from(await res.arrayBuffer());
   });
 
-  const { base64 } = await getPlaiceholder(buffer, {
+  const { svg } = await getPlaiceholder(buffer, {
     size: 4,
   });
   return (
@@ -20,7 +20,7 @@ export default async function BlurImg({ src, alt }) {
         fill
         alt={alt}
         placeholder="blur"
-        blurDataURL={base64}
+        blurDataURL={svg}
         sizes="(max-width: 768px) 100vw,"
         priority
       />
