@@ -1,7 +1,8 @@
 import { fetchData } from "./FetchData";
 import Test from "./Test";
 import Link from "next/link";
-import { Suspense } from "react";
+import Title from "./Title";
+import Image from "next/image";
 const Tab = async ({ path, movie }) => {
   const fetch = await fetchData(
     `trending/${path}/${movie === "week" ? "week" : "day"}`
