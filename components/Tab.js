@@ -19,8 +19,13 @@ const Tab = async ({ path, movie }) => {
         </Link>
       </div>
       <div className="w-full scroll-x flex gap-3 h-auto">
-        {results?.map((result) => (
-          <Test key={result.id} results={result} />
+        {results?.map((result, i) => (
+          <>
+            {i.length < 10 && <Test key={result.id} results={result} />}
+            {i.length >= 10 && (
+              <Suspense fallback={<div>Loading...</div>}></Suspense>
+            )}
+          </>
         ))}
       </div>
     </>
