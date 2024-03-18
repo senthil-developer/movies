@@ -11,7 +11,7 @@ export default async function BlurImg({ src, alt }) {
   });
 
   const { base64 } = await getPlaiceholder(buffer, {
-    size: 40,
+    size: 4,
   });
   return (
     <>
