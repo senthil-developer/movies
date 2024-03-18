@@ -9,7 +9,7 @@ const Tab = async ({ path, movie }) => {
     path: `trending/${path}/${movie === "week" ? "week" : "day"}`,
     revalidate: 1,
   });
-  const results = data;
+  const { results } = fetch;
   return (
     <>
       <div className="w-full rounded-full  flex items-center justify-between p-2 h-auto">

@@ -1,12 +1,10 @@
 import React from "react";
-import Navbar from "@/components/Navbar";
 import MainNavbar from "@/components/MainNavbar";
 import { fetchData } from "@/components/FetchData";
 import Tab from "@/components/Tab";
 
 export const page = async ({ searchParams }) => {
   const movie = searchParams.movie === "week" ? "week" : "day";
-  const series = searchParams.series === "week" ? "week" : "day";
   const { results } = await fetchData("trending/all/day", "", 10);
   const image = results?.[Math.floor(Math.random() * 20)];
   const bgPath = image.backdrop_path?.slice(1);
