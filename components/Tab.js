@@ -1,14 +1,11 @@
-import SwitchTab from "./SwitchTab";
 import { fetchData } from "./FetchData";
 import Test from "./Test";
-import SkeletonLoading from "./SkeletonLoading";
 import Link from "next/link";
 
 const Tab = async ({ path, movie }) => {
-  const fetch = await fetchData({
-    path: `trending/${path}/${movie === "week" ? "week" : "day"}`,
-    revalidate: 1,
-  });
+  const fetch = await fetchData(
+    `trending/${path}/${movie === "week" ? "week" : "day"}`
+  );
   const { results } = fetch;
   return (
     <>
@@ -18,13 +15,9 @@ const Tab = async ({ path, movie }) => {
         <Link href={`?movie=week}`}>week</Link>
       </div>
       <div className="w-full scroll-x flex gap-3 h-auto">
-        {results?.map((result) =>
-          result ? (
-            <Test key={result.id} results={result} />
-          ) : (
-            <SkeletonLoading />
-          )
-        )}
+        {results?.map((result) => (
+          <Test key={result.id} results={result} />
+        ))}
       </div>
     </>
   );
