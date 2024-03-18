@@ -10,7 +10,9 @@ export default async function BlurImg({ src, alt }) {
     return Buffer.from(await res.arrayBuffer());
   });
 
-  const { base64 } = await getPlaiceholder(buffer);
+  const { base64 } = await getPlaiceholder(buffer, {
+    size: 40,
+  });
   return (
     <>
       <Image
