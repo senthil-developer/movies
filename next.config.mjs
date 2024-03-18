@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const path = require("path");
+import withPlaiceholder from "@plaiceholder/next";
 
 const nextConfig = {
   images: {
@@ -15,9 +15,6 @@ const nextConfig = {
       },
     ],
   },
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
-  },
 };
 
-module.exports = nextConfig;
+export default withPlaiceholder(nextConfig);
