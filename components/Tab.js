@@ -42,7 +42,7 @@ const Tab = async ({ path, movie }) => {
                         result.poster_path
                       }
                       fill
-                      alt={alt}
+                      alt={result.name || result.title}
                     />
                   </div>
                   <div className="text-sm">
