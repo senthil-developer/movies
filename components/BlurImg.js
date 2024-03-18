@@ -14,7 +14,7 @@ export default async function BlurImg({ src, alt }) {
     size: 10,
   });
   return (
-    <div className={"size-52  relative bg-red-300"}>
+    <>
       <Image
         src={baseUrl + src}
         fill
@@ -24,6 +24,6 @@ export default async function BlurImg({ src, alt }) {
         sizes="(max-width: 768px) 100vw,"
         priority
       />
-    </div>
+    </>
   );
 }
