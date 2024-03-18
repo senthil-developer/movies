@@ -15,9 +15,24 @@ const Tab = async ({ path, movie }) => {
         <Link href={`?movie=week`}>week</Link>
       </div>
       <div className="w-full scroll-x flex gap-3 h-auto">
-        {results?.map((result) => (
-          <Test key={result.id} results={result} />
-        ))}
+        <Suspense
+          fallback={
+            <div className="w-full flex gap-3">
+              <div>Loading...</div>
+              <div>Loading...</div>
+              <div>Loading...</div>
+              <div>Loading...</div>
+              <div>Loading...</div>
+              <div>Loading...</div>
+              <div>Loading...</div>
+              <div>Loading...</div>
+            </div>
+          }
+        >
+          {results?.map((result) => (
+            <Test key={result.id} results={result} />
+          ))}
+        </Suspense>
       </div>
     </>
   );
