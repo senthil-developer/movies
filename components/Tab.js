@@ -31,7 +31,7 @@ const Tab = async ({ path, movie }) => {
                       result.media_type === "tv" ? "series" : result.media_type
                     }/${result.id}`,
                     query: {
-                      name: `${String(result?.name || results?.title)}`,
+                      name: `${String(result?.name || result?.title)}`,
                     },
                   }}
                 >
