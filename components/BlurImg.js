@@ -21,8 +21,6 @@ export default async function BlurImg({ src, alt }) {
         alt={alt}
         placeholder="blur"
         blurDataURL={base64}
-        sizes="(max-width: 768px) 100vw,"
-        priority
       />
     </>
   );
