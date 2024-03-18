@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Title from "./Title";
+import BlurImg from "./BlurImg";
 
 const Test = ({ results }) => {
   return (
@@ -15,24 +15,9 @@ const Test = ({ results }) => {
         }}
       >
         <div className="relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px]  md:h-[250px] z-10 rounded-lg">
-          <Image
-            src={
-              results.poster_path || results.profile_path
-                ? `https://image.tmdb.org/t/p/original${
-                    results.poster_path || results.profile_path
-                  }`
-                : "/defaultImage.jfif"
-            }
-            fill
-            style={{
-              objectFit: "cover",
-              borderTopLeftRadius: "16px",
-              borderTopRightRadius: "16px",
-            }}
-            alt={results.title || results.name || "image not available"}
-            className="rounded-lg"
-            placeholder="blur"
-            blurDataURL="/default.png"
+          <BlurImg
+            src={result.poster_path || result.profile_path}
+            alt={result.title || result.name}
           />
         </div>
         <div className="text-sm">
