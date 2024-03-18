@@ -16,8 +16,8 @@ const Test = ({ results }) => {
       >
         <div className="relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px]  md:h-[250px] z-10 rounded-lg">
           <BlurImg
-            src={result.poster_path || result.profile_path}
-            alt={result.title || result.name}
+            src={results.poster_path || results.profile_path}
+            alt={results.title || results.name}
           />
         </div>
         <div className="text-sm">
