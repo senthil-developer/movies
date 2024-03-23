@@ -17,11 +17,11 @@ const Navbar = () => {
   const url = splitUrl.split("/")[0];
   return (
     // mobile navbar
-    <nav className="w-full mt-10 flex header fixed bottom-0 md:hidden py-1 px-7 text-[10px] text-gray-400 bg-gray-800  items-center justify-between overflow-hidden z-50">
+    <nav className="header fixed bottom-0 z-50 mt-10 flex w-full items-center justify-between overflow-hidden bg-gray-800 px-7  py-1 text-[10px] text-gray-400 md:hidden">
       <Link
         className={
           path === "/"
-            ? "text-white flex flex-col items-center"
+            ? "flex flex-col items-center text-white"
             : "flex flex-col items-center"
         }
         href="/"
@@ -31,7 +31,7 @@ const Navbar = () => {
       <Link
         className={
           url === "movie"
-            ? "text-white flex flex-col items-center"
+            ? "flex flex-col items-center text-white"
             : "flex flex-col items-center"
         }
         href="/movie"
@@ -46,7 +46,7 @@ const Navbar = () => {
       <Link
         className={
           url === "search"
-            ? "text-white flex flex-col items-center"
+            ? "flex flex-col items-center text-white"
             : "flex flex-col items-center"
         }
         href="/search"
@@ -61,7 +61,7 @@ const Navbar = () => {
       <Link
         className={
           url === "series"
-            ? "text-white flex flex-col items-center"
+            ? "flex flex-col items-center text-white"
             : "flex flex-col items-center"
         }
         href="/series"
@@ -76,7 +76,7 @@ const Navbar = () => {
       <Link
         className={
           url === "person"
-            ? "text-white flex flex-col items-center"
+            ? "flex flex-col items-center text-white"
             : "flex flex-col items-center"
         }
         href="/person"

@@ -1,8 +1,8 @@
-export default function SkeletonLoading () {
-    return (
-        <div className="flex gap-3 ml-2 my-2">
-            <div className='bg-gray-300 flex flex-col relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px] md:h-[250px] z-10 rounded-lg'>   
-				{/* <svg width="100%" height="100%" viewBox="0 0 300 70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+export default function SkeletonLoading() {
+  return (
+    <div className="my-2 ml-2 flex gap-3">
+      <div className="md:[w-180px] relative z-10 flex h-[200px] w-[120px] flex-col rounded-lg bg-gray-300 sm:h-[230px] sm:w-[150px] md:h-[250px]">
+        {/* <svg width="100%" height="100%" viewBox="0 0 300 70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
 
 		<defs>
 
@@ -36,9 +36,8 @@ export default function SkeletonLoading () {
 		<path mask="url(#mask-element)" id="qube" d="M92,20.87c0,-1.86 -1.51,-3.37 -3.37,-3.37l-28.26,0c-1.86,0 -3.37,1.51 -3.37,3.37l0,28.26c0,1.86 1.51,3.37 3.37,3.37l28.26,0c1.86,0 3.37,-1.51 3.37,-3.37l0,-28.26Z" fill="#dadada"/>
 
 				</svg> */}
-            </div>
-            	<div className='text-sm'>
-            </div>
-        </div>
-    )
+      </div>
+      <div className="text-sm"></div>
+    </div>
+  );
 }

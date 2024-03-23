@@ -17,7 +17,7 @@ const Search = () => {
       id="searchForm"
       name="searchInput"
       onSubmit={handleSubmit}
-      className="flex border-gray-300 border justify-between py-3 px-5 rounded-full focus-within:shadow-md hover:shadow-md transition-shadow items-center  bg-white"
+      className="flex items-center justify-between rounded-full border border-gray-300 bg-white px-5 py-3 transition-shadow focus-within:shadow-md  hover:shadow-md"
     >
       <label htmlFor="input" className="sr-only">
         Search
@@ -29,12 +29,12 @@ const Search = () => {
         value={input}
         type="text"
         placeholder="search breaking bad"
-        className="outline-none
-        text-black w-[300px] bg-white"
+        className="w-[300px]
+        bg-white text-black outline-none"
       />
       <AiOutlineSearch
         onClick={handleSubmit}
-        className=" text-2xl  text-blue-600 font-bold ml-[9px] cursor-pointer"
+        className=" ml-[9px]  cursor-pointer text-2xl font-bold text-blue-600"
       />
     </form>
   );

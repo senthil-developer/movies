@@ -31,14 +31,14 @@ const Provider = ({ children }) => {
         <MainNavbar />
       </header>
       <main>{children}</main>
-      <footer className="w-full flex flex-col mb-14 mt-5">
-        <div className="flex justify-evenly items-center">
+      <footer className="mb-14 mt-5 flex w-full flex-col">
+        <div className="flex items-center justify-evenly">
           {Links.map((link) => (
             <Link
               href={link.link}
               key={link.id}
               target="_blank"
-              className="flex text items-center gap-2"
+              className="text flex items-center gap-2"
             >
               {link.icon} {link.social}
             </Link>

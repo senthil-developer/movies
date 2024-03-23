@@ -1,25 +1,22 @@
-
-    .scroll-y{
-        overflow-y: scroll;
-        scroll-behavior: smooth;
-    }
-    .scroll-y::-webkit-scrollbar{
-        width:10px;
-    }
-    .scroll-y::-webkit-scrollbar-track{
-        background: black;
-        
-    }
-    .scroll-y::-webkit-scrollbar-thumb{
-        border-radius: 5px;
-        box-shadow: inset 0px 0px 0px 2px black;
-        background-color: rgb(118, 172, 172);
-    }
-    .scroll-x{
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-    }
-    .scroll-x::-webkit-scrollbar{
-        display: none;
-    }
-   
+.scroll-y {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.scroll-y::-webkit-scrollbar {
+  width: 10px;
+}
+.scroll-y::-webkit-scrollbar-track {
+  background: black;
+}
+.scroll-y::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 0px 2px black;
+  background-color: rgb(118, 172, 172);
+}
+.scroll-x {
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}

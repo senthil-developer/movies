@@ -5,7 +5,7 @@ import BlurImg from "./BlurImg";
 
 const Test = ({ results }) => {
   return (
-    <div className="flex gap-3 ml-2 my-2 w-full h-full pb-5">
+    <div className="my-2 ml-2 flex h-full w-full gap-3 pb-5">
       <Link
         href={{
           pathname: `/${
@@ -14,14 +14,20 @@ const Test = ({ results }) => {
           query: { name: `${String(results?.name || results?.title)}` },
         }}
       >
-        <div className="relative w-[120px] h-[200px] sm:w-[150px] sm:h-[230px] md:[w-180px]  md:h-[250px] z-10 rounded-lg">
+        <div className="relative z-10 h-[200px] w-[140px] rounded-lg sm:h-[270px]  sm:w-[150px] md:h-[290px] md:w-[180px]">
           <BlurImg
-            src={results.poster_path || results.profile_path}
+            src={
+              results.poster_path
+                ? results.poster_path
+                : results.profile_path
+                  ? results.profile_path
+                  : "/default.png"
+            }
             alt={results.title || results.name}
           />
         </div>
-        <div className="text-sm">
-          <Title res={results} length={[12, 16, 16]} />
+        <div className="w-[140px] text-sm sm:w-[150px] md:w-[180px]">
+          <Title res={results} />
         </div>
       </Link>
     </div>

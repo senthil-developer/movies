@@ -2,9 +2,11 @@ import React from "react";
 
 import "./spinner.scss";
 
-const Spinner = ({ initial }) => {
+const Spinner = () => {
   return (
-    <div className={`loadingSpinner ${initial ? "initial" : ""}`}>
+    <div
+      className={`  flex h-full w-[100vwl] items-center justify-center  overflow-hidden bg-slate-300`}
+    >
       <svg className="spinner" viewBox="0 0 50 50">
         <circle
           className="path"

@@ -78,8 +78,8 @@
       }
     }
   }
-  .content::-webkit-scrollbar {
-    display: none;
-    scroll-behavior: inherit;
-  }
+}
+.content::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: inherit;
 }

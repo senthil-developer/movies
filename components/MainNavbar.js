@@ -35,8 +35,8 @@ const Theme = () => {
   ];
   return (
     <>
-      <div className="px-5 z-20 w-full flex justify-between fixed top-0 backdrop-blur-[3.5px]">
-        <div className="relative w-auto h-auto">
+      <div className="fixed top-0 z-20 flex w-full justify-between px-5 backdrop-blur-[3.5px]">
+        <div className="relative h-auto w-auto">
           <Link href="/">
             <Image
               src="/logo1.png"
@@ -44,16 +44,16 @@ const Theme = () => {
               width={30}
               height={30}
               style={{ objectFit: "cover", width: "30px", height: "30px" }}
-              className="rounded-lg w-auto h-auto"
+              className="h-auto w-auto rounded-lg"
             />
           </Link>
         </div>
-        <ul className=" hidden md:flex justify-between items-center gap-10">
+        <ul className=" hidden items-center justify-between gap-10 md:flex">
           {NavLink.map((item, index) => (
             <Link
               href={item.link}
               key={index}
-              className={`text-lg px-2 ${
+              className={`px-2 text-2xl  ${
                 item.url === url
                   ? "rounded-2xl bg-yellow-300 text-gray-500"
                   : ""

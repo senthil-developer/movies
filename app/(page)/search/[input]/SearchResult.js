@@ -22,7 +22,7 @@ const SearchResult = ({ query }) => {
         setData(res);
         setPageNum((prev) => prev + 1);
         setLoading(false);
-      }
+      },
     );
   };
 
@@ -38,7 +38,7 @@ const SearchResult = ({ query }) => {
           setData(res);
         }
         setPageNum((prev) => prev + 1);
-      }
+      },
     );
   };
 
@@ -60,7 +60,7 @@ const SearchResult = ({ query }) => {
           {data?.results?.length > 0 ? (
             <>
               <InfiniteScroll
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-11 overflow-y-hidden searchRes overflow-x-hidden"
+                className="searchRes grid w-full grid-cols-2 gap-2 overflow-x-hidden  overflow-y-hidden pl-11 sm:pl-20 md:grid-cols-3 lg:grid-cols-4 lg:pl-32 xl:grid-cols-5"
                 dataLength={data?.results?.length || []}
                 next={fetchNextPageData}
                 hasMore={pageNum <= data?.total_pages}
@@ -72,7 +72,7 @@ const SearchResult = ({ query }) => {
               </InfiniteScroll>
             </>
           ) : (
-            <div className="gap-5 text-2xl w-full h-screen justify-center items-center flex bg-[url('/no-search.png')] bg-no-repeat bg-contain bg-center flex-col">
+            <div className="flex h-screen w-full flex-col items-center justify-center gap-5 bg-[url('/no-search.png')] bg-contain bg-center bg-no-repeat text-2xl">
               <span>Sorry, Results not found!</span>
               <Search />
             </div>

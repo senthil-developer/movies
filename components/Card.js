@@ -28,14 +28,10 @@ const page = async ({ id }) => {
   return (
     <div className="pl-2">
       <div
-        className="w-full h-96 md:h-[500px] bg-cover rounded-md bg-center z-10"
-        style={{
-          backgroundImage: `url(${bg})`,
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "none",
-        }}
+        className="z-10 h-96 w-full rounded-md bg-cover  bg-top bg-no-repeat md:h-[30rem] lg:h-[40rem]"
+        style={{ backgroundImage: `url(${bg})` }}
       >
-        <div className="ml-6 pt-[135px] relative w-[150px] h-[100px] sm:w-[150px] sm:h-[130px] md:w-[220px] md:h-[250px] rounded-lg">
+        <div className="relative ml-6 h-[100px] w-[150px] rounded-lg pt-[135px] sm:h-[130px] sm:w-[150px] md:h-[250px] md:w-[220px]">
           <Image
             src={
               res.poster_path || res.profile_path
@@ -54,42 +50,45 @@ const page = async ({ id }) => {
           />
         </div>
       </div>
-      <div className="w-full lg:w-[80%] mx-auto">
-        <h1 className="text-2xl">{res.title || res.name}</h1>
-        <h4 className="text-sm text-gray-300 ">
-          original title : {res.original_title || res.original_name}
-        </h4>
-        <p> {res.overview ? `Overview : ${res.overview}` : ""}</p>
-        {res?.budget == 0 || res?.created_by ? (
-          ""
-        ) : (
-          <p>Budget : &#36;{res.budget} </p>
-        )}
-        <div className="flex ">
-          <div className="mt-2">Genre: </div>
-          <div className="flex flex-wrap">
-            {res.genres.map((item) => {
-              return (
-                <div key={item.id} className="p-1 m-1 rounded-md  bg-red-300">
-                  {item.name}
-                </div>
-              );
-            })}
+      <div className="mx-auto w-full lg:w-[80%]">
+        <div className="flex w-full  flex-col md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-3 md:w-[40%] ">
+            <div>
+              <h1 className="text-2xl">{res.title || res.name}</h1>
+              <h4 className="text-sm text-gray-300 ">
+                original title : {res.original_title || res.original_name}
+              </h4>
+            </div>
+            <p className="w-ful l line-clamp-8 text-sm md:line-clamp-5 md:text-base  lg:text-xl">
+              {res.overview ? `Overview : ${res.overview}` : "No overview"}
+            </p>
           </div>
-        </div>
-        <div className="flex gap-2">
-          <div>Status : {res.status ? res.status : "no info"}</div>
-          <div>
-            Release date :{" "}
-            {res.release_date || res.first_air_date
-              ? dayjs(res.release_date || res.first_air_date).format(
-                  "D MMM YYYY"
-                )
-              : "no info"}
+          <div className="space-y-3  md:w-[40%]">
+            <p>Budget : {res.budget ? "&#36;" + res.budget : "no info"}</p>
+            <div className="flex w-full flex-wrap items-center">
+              Genres :{res.genres.length === 0 && "No Genres"}
+              {res.genres?.map((item) => {
+                return (
+                  <div key={item.id} className="m-1 rounded-md bg-red-300  p-1">
+                    {item.name}
+                  </div>
+                );
+              })}
+            </div>
+            <p>Status : {res.status ? res.status : " no info"}</p>
+            <p>
+              Release date :
+              {res.release_date || res.first_air_date
+                ? dayjs(res.release_date || res.first_air_date).format(
+                    " D MMM YYYY",
+                  )
+                : " no info"}
+            </p>
+            <p>
+              RunTime :
+              {res.runtime ? hourToMins(res?.runtime) : " Not available"}
+            </p>
           </div>
-        </div>
-        <div className="flex gap-2">
-          <div>{res.runtime ? "RunTime :" + hourToMins(res?.runtime) : ""}</div>
         </div>
         <div className="group">
           <p className="text-xl font-bold group-visited:text-slate-500">
@@ -97,20 +96,20 @@ const page = async ({ id }) => {
           </p>
           <Credit credit={credit} />
         </div>
-        {Object.keys(similar.results).length > 0 && (
+        {similar.results.length > 0 && (
           <section>
             <p>Similar {res.first_air_date ? "Series" : "Movies"}</p>
-            <div className="flex w-full overflow-x-scroll gap-5 scroll-x">
+            <div className="scroll-x flex w-full gap-5 overflow-x-scroll">
               {similar.results.map((item) => (
                 <MovieCard results={item} mediaType={path} key={item.id} />
               ))}
             </div>
           </section>
         )}
-        {Object.keys(recommendations.results).length > 0 && (
+        {recommendations.results.length > 0 && (
           <section>
             <p>Recommended {res.first_air_date ? "Series" : "Movies"}</p>
-            <div className=" flex w-full overflow-x-scroll gap-5  scroll-x">
+            <div className=" scroll-x flex w-full gap-5  overflow-x-scroll">
               {recommendations.results.map((item) => (
                 <MovieCard results={item} mediaType={path} key={item.id} />
               ))}
@@ -121,7 +120,7 @@ const page = async ({ id }) => {
           <Link
             href={res.homepage}
             target="_black"
-            className="border border-red-700 bg-red-500 flex w-fit items-center"
+            className="flex w-fit items-center border border-red-700 bg-red-500"
           >
             Watch {res.first_air_date ? "Series" : "Movies"}{" "}
             <ExternalLinkIcon className="mx-1" />

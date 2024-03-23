@@ -1,11 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Title from "./Title";
+import BlurImg from "./BlurImg";
+import Image from "next/image";
 
 const Test = ({ results, mediaType }) => {
   return (
-    <div className="flex gap-3 ml-2 my-2 w-full h-full">
+    <div className="my-2 ml-2 flex h-full w-full  justify-center gap-3">
       <Link
         href={{
           pathname: `/${mediaType === "tv" ? "series" : mediaType}/${
@@ -14,29 +15,20 @@ const Test = ({ results, mediaType }) => {
           query: { name: `${String(results?.name || results?.title)}` },
         }}
       >
-        <div className="flex flex-col relative w-[180px] h-[230px] md:[w-200px] md:h-[250px] rounded-lg">
+        <div className="relative z-10 h-[200px] w-[120px] rounded-lg sm:h-[230px]  sm:w-[150px] md:h-[280px] md:w-[200px]">
           <Image
             src={
-              results.poster_path || results.profile_path
-                ? `https://image.tmdb.org/t/p/original${
-                    results.poster_path || results.profile_path
-                  }`
-                : "/defaultImage.jfif"
+              "https://image.tmdb.org/t/p/original" + results?.poster_path ||
+              results?.profile_path
             }
+            alt={results?.name || results?.title}
             fill
-            style={{
-              objectFit: "cover",
-              borderTopRightRadius: "16px",
-              borderTopLeftRadius: "16px",
-            }}
-            alt={results.title || results.name || "image not available"}
-            className="rounded-lg "
-            placeholder="blur"
-            blurDataURL={"/default.png"}
+            className="rounded-lg object-cover"
+            sizes="(max-width: 768px) 100vw,"
           />
         </div>
-        <div className="text-sm">
-          <Title res={results} length={[20, 20, 20]} />
+        <div className="w-[120px] truncate text-sm sm:w-[150px] md:w-[200px]">
+          <Title res={results} />
         </div>
       </Link>
     </div>

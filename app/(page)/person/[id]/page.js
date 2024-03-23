@@ -12,30 +12,32 @@ export async function generateMetadata({ params }) {
     person?.known_for_department == "Acting" && person?.gender == 2
       ? "Actor"
       : "" || (person?.known_for_department == "Acting" && person?.gender == 1)
-      ? "Actress"
-      : "" || person?.known_for_department == "Writing"
-      ? "Writer"
-      : "" || person?.known_for_department == "Directing"
-      ? "Director"
-      : "" || person?.known_for_department == "Editing"
-      ? "Editor"
-      : "" || person?.known_for_department == "Production"
-      ? "Producer"
-      : "" || person?.known_for_department == "Sound"
-      ? "Music Composer"
-      : "" || person?.known_for_department == "Camera"
-      ? "Cinematographer"
-      : "" || person?.known_for_department == "Crew"
-      ? "Stunts"
-      : "" || person?.known_for_department == "Art"
-      ? "Art Department"
-      : "" || person?.known_for_department == "Visual Effects"
-      ? "VFX Artist"
-      : "" || person?.known_for_department == "Lighting"
-      ? "Lighting Artist"
-      : "" || person?.known_for_department == "Costume & Make-Up"
-      ? "Costume Designer"
-      : "";
+        ? "Actress"
+        : "" || person?.known_for_department == "Writing"
+          ? "Writer"
+          : "" || person?.known_for_department == "Directing"
+            ? "Director"
+            : "" || person?.known_for_department == "Editing"
+              ? "Editor"
+              : "" || person?.known_for_department == "Production"
+                ? "Producer"
+                : "" || person?.known_for_department == "Sound"
+                  ? "Music Composer"
+                  : "" || person?.known_for_department == "Camera"
+                    ? "Cinematographer"
+                    : "" || person?.known_for_department == "Crew"
+                      ? "Stunts"
+                      : "" || person?.known_for_department == "Art"
+                        ? "Art Department"
+                        : "" || person?.known_for_department == "Visual Effects"
+                          ? "VFX Artist"
+                          : "" || person?.known_for_department == "Lighting"
+                            ? "Lighting Artist"
+                            : "" ||
+                                person?.known_for_department ==
+                                  "Costume & Make-Up"
+                              ? "Costume Designer"
+                              : "";
   const image = person.profile_path.slice(1);
   const url = person.profile_path
     ? `https://movieuniverse.vercel.app/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${image}&w=640&q=75`
@@ -65,38 +67,41 @@ const page = async ({ params }) => {
   const person = await fetchData(`person/${params.id}`, "");
   const combinedCredit = await fetchData(
     `person/${params.id}/combined_credits`,
-    ""
+    "",
   );
   const movieCredit = await fetchData(`person/${params.id}/movie_credits`, "");
   const tvCredit = await fetchData(`person/${params.id}/tv_credits`, "");
   const know_for = combinedCredit.cast.slice(0, 15);
   const cast = combinedCredit.cast.sort(compare);
+
   const dept =
     person?.known_for_department == "Acting"
       ? "Actor"
       : "" || person?.known_for_department == "Writing"
-      ? "Writer"
-      : "" || person?.known_for_department == "Directing"
-      ? "Director"
-      : "" || person?.known_for_department == "Editing"
-      ? "Editor"
-      : "" || person?.known_for_department == "Production"
-      ? "Producer"
-      : "" || person?.known_for_department == "Sound"
-      ? "Music Composer"
-      : "" || person?.known_for_department == "Camera"
-      ? "Cinematographer"
-      : "" || person?.known_for_department == "Crew"
-      ? "Stunts"
-      : "" || person?.known_for_department == "Art"
-      ? "Art Department"
-      : "" || person?.known_for_department == "Visual Effects"
-      ? "VFX Artist"
-      : "" || person?.known_for_department == "Lighting"
-      ? "Lighting Artist"
-      : "" || person?.known_for_department == "Costume & Make-Up"
-      ? "Costume Designer"
-      : "";
+        ? "Writer"
+        : "" || person?.known_for_department == "Directing"
+          ? "Director"
+          : "" || person?.known_for_department == "Editing"
+            ? "Editor"
+            : "" || person?.known_for_department == "Production"
+              ? "Producer"
+              : "" || person?.known_for_department == "Sound"
+                ? "Music Composer"
+                : "" || person?.known_for_department == "Camera"
+                  ? "Cinematographer"
+                  : "" || person?.known_for_department == "Crew"
+                    ? "Stunts"
+                    : "" || person?.known_for_department == "Art"
+                      ? "Art Department"
+                      : "" || person?.known_for_department == "Visual Effects"
+                        ? "VFX Artist"
+                        : "" || person?.known_for_department == "Lighting"
+                          ? "Lighting Artist"
+                          : "" ||
+                              person?.known_for_department ==
+                                "Costume & Make-Up"
+                            ? "Costume Designer"
+                            : "";
   const res = cast.map((cast) => ({
     id: cast.id,
     year: cast?.release_date?.substring(0, 4),
@@ -104,8 +109,8 @@ const page = async ({ params }) => {
     character: cast.media_type === "movie" ? cast?.character : undefined,
   }));
   return (
-    <div className="mt-8 mx-auto w-full lg:w-[80%]">
-      <div className=" max-w-fit mx-auto flex gap-10">
+    <div className="mx-auto mt-8 w-full lg:w-[80%]">
+      <div className=" mx-auto flex max-w-fit gap-10">
         <div className="my-auto">
           <span className="flex">
             Name : <h1> {person.name}</h1>
@@ -120,7 +125,7 @@ const page = async ({ params }) => {
             <span>Born : </span> <Dayjs res={person} />
           </div>
         </div>
-        <div className="relative w-[200px] h-[300px]">
+        <div className="relative h-[300px] w-[200px]">
           <Image
             src={
               person.profile_path
@@ -138,10 +143,10 @@ const page = async ({ params }) => {
       </div>
       <div className="text-sm">{person.biography.substring(0, 500)}</div>
       <p>Known for</p>
-      <div className="w-full scroll-x flex gap-3">
-        {know_for.map((res) => (
-          <Test key={res.id} results={res} />
-        ))}
+      <div className="scroll-x flex w-full gap-3">
+        {combinedCredit.cast.map((res) => {
+          return <Test key={res.id} results={res} />;
+        })}
       </div>
       <p>
         Career as{" "}

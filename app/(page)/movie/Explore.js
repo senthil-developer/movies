@@ -2,16 +2,15 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import { usePathname } from "next/navigation";
-import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
-import "./explore.scss";
-import { fetchDataFromAxios } from "../utils/api";
-import useFetch from "../hooks/useFetch";
-import Spinner from "../Spinner";
-import MovieCard from "../MovieCard";
+import "@/components/explore/explore.scss";
+import { fetchDataFromAxios } from "@/components/utils/api";
+import useFetch from "@/components/hooks/useFetch";
+import Spinner from "@/components/Spinner";
+import MovieCard from "@/components/MovieCard";
 import { motion } from "framer-motion";
-import ExploreLoading from "../loading/ExploreLoading";
+import ExploreLoading from "@/components/loading/ExploreLoading";
 
 let filters = {};
 
@@ -40,15 +39,6 @@ const Explore = () => {
 
   const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
 
-  const fetchInitialData = () => {
-    setLoading(true);
-    fetchDataFromAxios(`/discover/${mediaType}`, filters).then((res) => {
-      setData(res);
-      setPageNum((prev) => prev + 1);
-      setLoading(false);
-    });
-  };
-
   const fetchNextPageData = () => {
     fetchDataFromAxios(`/discover/${mediaType}?page=${pageNum}`, filters).then(
       (res) => {
@@ -71,7 +61,7 @@ const Explore = () => {
     setPageNum(1);
     setSortby(null);
     setGenre(null);
-    fetchInitialData();
+    fetchNextPageData();
   }, [mediaType]);
 
   const onChange = (selectedItems, action) => {
@@ -96,8 +86,13 @@ const Explore = () => {
     }
 
     setPageNum(1);
-    fetchInitialData();
+    fetchNextPageData();
   };
+
+  const handleLoadMore = () => {
+    fetchNextPageData();
+  };
+
   return (
     <div className="explorePage w-full">
       <div className="pageHeader">
@@ -135,23 +130,14 @@ const Explore = () => {
           />
         </div>
       </div>
+      {loading && <Spinner />}
       {!loading && (
         <>
           {data?.results?.length > 0 ? (
-            <Suspense fallback={<ExploreLoading />}>
-              <InfiniteScroll
-                className="content grid h-full w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 "
-                dataLength={data?.results?.length || []}
-                next={fetchNextPageData}
-                hasMore={pageNum <= data?.total_pages}
-                loader={
-                  <div className="flex  h-[10vh] w-full items-center justify-center ">
-                    <div className="h-10 w-10 animate-spin rounded-full  border-t-2" />
-                  </div>
-                }
-              >
+            <>
+              <div className="content grid h-full w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4 ">
                 {data?.results?.map((item, index) => {
-                  if (item.media_type === "person") return;
+                  if (item.media_type === "person") return null;
                   return (
                     <MovieCard
                       key={index}
@@ -160,10 +146,17 @@ const Explore = () => {
                     />
                   );
                 })}
-              </InfiniteScroll>
-            </Suspense>
+              </div>
+              {pageNum <= data?.total_pages && (
+                <div className="loadMoreButtonContainer flex w-full items-center justify-center pt-16">
+                  <button className="loadMoreButton " onClick={handleLoadMore}>
+                    Load More
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
-            <div className="oh flex h-full w-full">
+            <div className="flex h-full w-full">
               <span className="resultNotFound">Sorry, Results not found!</span>
             </div>
           )}

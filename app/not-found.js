@@ -28,22 +28,22 @@ export default function notFound() {
     },
   ];
   return (
-    <div className="w-full h-screen flex items-center flex-col md:flex-row md:justify-center gap-10">
+    <div className="flex h-screen w-full flex-col items-center gap-10 md:flex-row md:justify-center">
       <Image
         src={"/404.png"}
         width={300}
         height={250}
         // style={{ width: "auto", height: "auto" }}
         alt={"404 page not found"}
-        className="rounded-2xl mt-32  md:w-[500px] md:h-[400px] lg:w-[600px]  lg:h-[500px] "
+        className="mt-32 rounded-2xl  md:h-[400px] md:w-[500px] lg:h-[500px]  lg:w-[600px] "
         placeholder="blur"
         blurDataURL="/default.png"
       />
-      <div className="flex flex-col gap-5 mt-10">
+      <div className="mt-10 flex flex-col gap-5">
         {NavLink.map((item, i) => (
           <Link
             href={`${item.link}`}
-            className="underline-offset-4 underline text-blue-200"
+            className="text-blue-200 underline underline-offset-4"
             key={i}
           >
             {item.name}

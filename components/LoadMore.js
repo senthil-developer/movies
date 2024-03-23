@@ -7,41 +7,49 @@ import { fetchData } from "./FetchData";
 import { motion } from "framer-motion";
 import MovieCard from "./MovieCard";
 
-let page = 1;
+let pageNum = 1;
 
 function LoadMore() {
   const { ref, inView } = useInView();
+  const [page, setPage] = useState([]);
   const [data, setData] = useState([]);
   useEffect(() => {
     if (inView) {
-      fetchData("person/popular", `page=${page}`).then((res) => {
-        setData([...data, ...res.results]);
-        page++;
+      fetchData("person/popular", `page=${pageNum}`).then((res) => {
+        setPage([...page, ...res.results]);
+        pageNum++;
       });
     }
-  }, [inView, data]);
-
+  }, [inView, page]);
+  // const alphabetOrder = page?.sort((a, b) => a.name.localeCompare(b.name));
   return (
     <>
-      <div className="pt-10">
-        <motion.h1
-          initial={{ x: 1000 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-6 text-lg text-nowrap ml-9"
-        >
-          Popular peoples
-        </motion.h1>
-        <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2  w-full lg:pl-32 sm:pl-20 pl-5 overflow-y-hidden content overflow-x-hidden">
-          {data?.map((item) => {
-            return (
-              <MovieCard key={item.id} results={item} mediaType={"person"} />
-            );
+      <div className="flex w-full flex-col pt-10">
+        <div className="flex items-center justify-between">
+          <motion.h1
+            initial={{ x: 1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-nowrap mb-6 ml-9 text-lg"
+          >
+            Popular peoples
+          </motion.h1>
+          <div>
+            {/* <button onClick={setData(alphabetOrder)}>A to Z</button> */}
+          </div>
+        </div>
+        <section className="grid h-full w-full grid-cols-2 place-content-center place-items-center  md:grid-cols-3  lg:grid-cols-4">
+          {page?.map((item, i) => {
+            return <MovieCard key={i} results={item} mediaType={"person"} />;
           })}
         </section>
       </div>
-      <section className="w-full flex justify-center ">
-        <div ref={ref} className="animate-spin h-10 w-10 pt-10"></div>
+      <section className="flex w-full items-center  justify-center">
+        <div
+          ref={ref}
+          className="h-10 w-10 origin-center animate-spin
+        rounded-full border-t-4"
+        />
       </section>
     </>
   );

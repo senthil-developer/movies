@@ -7,10 +7,10 @@ const Credit = ({ credit }) => {
   const topCast = cast.slice(0, 14);
 
   return (
-    <div className="flex scroll-x gap-2">
+    <div className="scroll-x flex gap-2">
       {topCast.map((cast) => {
         return (
-          <div className="flex flex-col h-auto gap-1" key={cast.id}>
+          <div className="flex h-auto flex-col gap-1" key={cast.id}>
             <Link
               href={{
                 pathname: `/person/${cast.id}`,
@@ -18,7 +18,7 @@ const Credit = ({ credit }) => {
               }}
               className="text-xs font-bold"
             >
-              <div className="flex items-center relative w-[150px] h-[150px] mx-2 rounded-full">
+              <div className="relative mx-2 flex h-[150px] w-[150px] items-center rounded-full">
                 <Image
                   src={
                     cast.profile_path
@@ -39,7 +39,7 @@ const Credit = ({ credit }) => {
                 />
               </div>
             </Link>
-            <div className="mt-2 flex flex-col  items-center flex-wrap">
+            <div className="mt-2 flex flex-col  flex-wrap items-center">
               <Link
                 href={{
                   pathname: `/person/${cast.id}`,
@@ -47,12 +47,12 @@ const Credit = ({ credit }) => {
                 }}
                 className="text-xs font-bold"
               >
-                <p className="text-xs font-bold  whitespace-nowrap">
+                <p className="whitespace-nowrap text-xs  font-bold">
                   {cast.name.substring(0, 20)}
                   {cast.name.length > 20 ? <span>...</span> : <span></span>}
                 </p>
               </Link>
-              <p className="text-[10px] text-opacity-50 dark:text-white text-black">
+              <p className="text-[10px] text-black text-opacity-50 dark:text-white">
                 {cast.character.substring(0, 23)}
                 {cast.character.length > 24 ? <span>...</span> : <span></span>}
               </p>

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
-import Link from "next/link"
+import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 
-export const  columns = [   
+export const columns = [
   {
     accessorKey: "year",
     header: "Year",
@@ -11,13 +11,13 @@ export const  columns = [
   {
     accessorKey: "title",
     header: "Title",
-    cell:({row})=>{
-      const res = row.getValue('title')
-      return <Link href={'f'}>{res}</Link>
-    }
+    cell: ({ row }) => {
+      const res = row.getValue("title");
+      return <Link href={"f"}>{res}</Link>;
+    },
   },
   {
     accessorKey: "character",
     header: "Character",
   },
-]
+];

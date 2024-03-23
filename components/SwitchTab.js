@@ -16,7 +16,7 @@ const SwitchTab = ({ data, onTab }) => {
       {data.map((tab, index) => (
         <div
           key={index}
-          className={`w-[50px] h-[30px] rounded-full  cursor-pointer flex justify-center items-center z-10 ${
+          className={`z-10 flex h-[30px]  w-[50px] cursor-pointer items-center justify-center rounded-full ${
             index == selectedTab ? "bg-red-500" : ""
           }`}
           onClick={() => activeTab(tab, index)}
@@ -25,7 +25,7 @@ const SwitchTab = ({ data, onTab }) => {
         </div>
       ))}
       <span
-        className="absolute w-[50px] h-[50px] rounded-full  left-0 transition-all"
+        className="absolute left-0 h-[50px] w-[50px]  rounded-full transition-all"
         style={{ bg }}
       />
     </div>

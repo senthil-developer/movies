@@ -1,11 +1,13 @@
-import ExplorePage from "@/components/explore/ExplorePage";
-import React from "react";
+import React, { Suspense } from "react";
+import Explore from "@/components/explore/ExplorePage";
+import ExploreLoading from "@/components/loading/ExploreLoading";
 
 const page = async () => {
-  // const res = await fetchData("movie/949229", "");
   return (
-    <div className="w-full h-full">
-      <ExplorePage />
+    <div className="flex w-full  justify-center md:px-[5%] lg:px-[10%]">
+      <Suspense fallback={<ExploreLoading title="Explore Movies" />}>
+        <Explore />
+      </Suspense>
     </div>
   );
 };
