@@ -6,21 +6,15 @@ import { getPlaiceholder } from "plaiceholder";
 export default async function BlurImg({ src, alt }) {
   const Src = src.length > 15;
   const srcImg = Src ? "https://image.tmdb.org/t/p/w500" + src : src;
-  const blurImg = Src && "https://image.tmdb.org/t/p/w92" + src 
-  const buffer = await fetch(blurImg).then(async (res) => {
-    return Buffer.from(await res.arrayBuffer());
-  });
-  const { base64 } = await getPlaiceholder(buffer, {
-    size: 4,
-  });
+ 
   return (
     <>
       <Image
         src={srcImg}
         fill
         alt={alt}
-        placeholder="blur"
-        blurDataURL={base64}
+        //placeholder="blur"
+        //blurDataURL={base64}
         sizes="(max-width: 768px) 100vw,"
         className="rounded-md object-cover"
       />
