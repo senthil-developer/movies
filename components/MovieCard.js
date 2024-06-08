@@ -18,7 +18,7 @@ const Test = ({ results, mediaType }) => {
         <div className="relative z-10 h-[200px] w-[120px] rounded-lg sm:h-[230px]  sm:w-[150px] md:h-[280px] md:w-[200px]">
           <Image
             src={
-              "https://image.tmdb.org/t/p/original" + results?.poster_path ||
+              "https://image.tmdb.org/t/p/original" +
               results?.profile_path
             }
             alt={results?.name || results?.title}
