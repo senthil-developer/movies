@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
                               : "";
   const image = person.profile_path.slice(1);
   const url = person.profile_path
-    ? `https://movieuniverse.vercel.app/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${image}&w=640&q=75`
+    ? `${process.env.SITE_URL}/_next/image?url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2F${image}&w=640&q=75`
     : "/default.png";
   return {
     title: `${person.name} | ${dept}`,
