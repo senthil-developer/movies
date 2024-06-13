@@ -17,7 +17,7 @@ export const metadata = {
   keywords:
     "movie,series,trending,person,history,movieuniverse,movieuniverse.vercel.app,latest movies,latest series,latest people,actor history,actress history,",
   openGraph: {
-    images: ["/logo1.png"],
+    images: [`${process.env.SITE_URL}/logo1.png`],
   },
 };
 
