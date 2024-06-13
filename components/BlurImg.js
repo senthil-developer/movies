@@ -7,8 +7,7 @@ export default async function BlurImg({ src, alt }) {
   const Src = src.length > 15;
   const srcImg = Src ? "https://image.tmdb.org/t/p/w500" + src : src;
   const blurImg = Src ? "https://image.tmdb.org/t/p/w92" + src : "https://movieuniverse-nextjs.netlify.app" + src
-  const buffer = await fetch(blurImg).then(async (res) => {
-    return Buffer.from(await res.arrayBuffer());
+  const buffer = Buffer.from(blurImg,'base64')
   });
   const { base64 } = await getPlaiceholder(buffer, {
     size: 4,
